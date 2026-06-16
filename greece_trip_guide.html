@@ -469,6 +469,47 @@
       line-height: 1.45;
     }
     .cf-pres-item:last-child { border-bottom: none; }
+    /* ─── Favorites (★) + per-session notes ─── */
+    .cf-star {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      padding: 0 4px;
+      color: var(--border);
+      flex-shrink: 0;
+    }
+    .cf-star.on { color: var(--gold); }
+    .cf-title-row { display: flex; align-items: flex-start; gap: 6px; justify-content: space-between; }
+    .cf-title-row .title { flex: 1; }
+    .cf-note-toggle {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 0;
+      cursor: pointer;
+      display: block;
+      margin-top: 4px;
+    }
+    .cf-note-toggle.has-note { color: var(--gold); }
+    .cf-note-box {
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 6px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font: inherit;
+      font-size: 13px;
+      padding: 8px 10px;
+      resize: vertical;
+      min-height: 54px;
+    }
+    .cf-note-box:focus { outline: none; border-color: var(--accent); }
     .cf-op {
       font-size: 10px;
       font-weight: 800;
@@ -685,7 +726,7 @@
   <!-- ═══ HEADER ═══ -->
   <div class="header">
     <h1>Athens, Greece</h1>
-    <p>June 28 – July 6, 2026 &nbsp;·&nbsp; Brett &amp; Wife</p>
+    <p>June 28 – July 6, 2026 &nbsp;·&nbsp; Brett &amp; Rachael</p>
   </div>
 
   <!-- ═══ TAB NAV ═══ -->
@@ -711,7 +752,7 @@
     <div class="hero" style="background-image:url('https://images.unsplash.com/photo-1555993539-1732b0258235?w=1200&q=70')">
       <div class="eyebrow">Next Adventure</div>
       <h2>Athens, Greece</h2>
-      <div class="hero-sub">June 28 – July 6, 2026 · Brett &amp; Wife</div>
+      <div class="hero-sub">June 28 – July 6, 2026 · Brett &amp; Rachael</div>
       <div class="countdown" id="countdown">
         <div class="cd-unit"><div class="cd-num" id="cd-days">—</div><div class="cd-label">Days</div></div>
         <div class="cd-unit"><div class="cd-num" id="cd-hrs">—</div><div class="cd-label">Hrs</div></div>
@@ -842,12 +883,12 @@
       <div class="alert green">
         <strong>Outbound · Jun 27 → Jun 28 · Delta 296</strong>
         ATL → ATH · Departs <strong>3:30 PM</strong> · Arrives <strong>9:20 AM</strong> (Jun 28) · Nonstop · 10h 50m<br>
-        Wife: Seat 43H · Conf •••••• (in email) &nbsp;|&nbsp; Brett: Seat TBD · Conf TBD
+        Rachael: Seat 43H · Conf •••••• (in email) &nbsp;|&nbsp; Brett: Seat TBD · Conf TBD
       </div>
       <div class="alert green">
         <strong>Return · Jul 5 · Delta 297</strong>
         ATH → ATL · Departs <strong>11:30 AM</strong> · Arrives <strong>5:02 PM</strong> · Nonstop · 12h 32m<br>
-        Wife: Seat 43G · Conf •••••• (in email) &nbsp;|&nbsp; Brett: Seat TBD · Conf TBD
+        Rachael: Seat 43G · Conf •••••• (in email) &nbsp;|&nbsp; Brett: Seat TBD · Conf TBD
       </div>
       <div class="alert blue">
         <strong>At the Airport</strong>
@@ -867,7 +908,7 @@
       <div class="section-title">Jun 27 (Sat) → Jun 28 (Sun) · Travel Day</div>
       <div class="alert green" style="margin-bottom:12px">
         <strong>Flight Confirmation · Delta 296</strong>
-        Wife — Seat 43H · Conf •••••• (in email) · FF# •••••• (in wallet) &nbsp;|&nbsp; Brett — Seat TBD · Conf TBD
+        Rachael — Seat 43H · Conf •••••• (in email) · FF# •••••• (in wallet) &nbsp;|&nbsp; Brett — Seat TBD · Conf TBD
       </div>
       <div class="timeline">
         <div class="timeline-item transit">
@@ -992,7 +1033,7 @@
       <div class="section-title">Wed Jul 1 · Conference Day 1 — Brett Solo</div>
       <div class="alert blue">
         <strong>IARC 2026 Begins</strong>
-        Wife at Technopolis City of Athens · Brett on his own for 3 days.
+        Rachael at Technopolis City of Athens · Brett on his own for 3 days.
       </div>
       <div class="placeholder">Itinerary to be planned — see Sights + Hidden tabs for options</div>
     </section>
@@ -1006,7 +1047,7 @@
     <section>
       <div class="section-title">Thu Jul 2 · Conference Day 2 — Brett Solo</div>
       <div class="alert blue">
-        <strong>Wife at Conference</strong>
+        <strong>Rachael at Conference</strong>
         Full day on your own.
       </div>
       <div class="placeholder">Itinerary to be planned — see Sights + Hidden tabs for options</div>
@@ -1022,7 +1063,7 @@
       <div class="section-title">Fri Jul 3 · Conference Day 3 — Brett Solo</div>
       <div class="alert blue">
         <strong>IARC Last Day</strong>
-        Conference ends today. Check with wife on evening plans — conference may include a social event at Ancient Epidaurus Theatre (~150 km from Athens, Peloponnese).
+        Conference ends today. Check with Rachael on evening plans — conference may include a social event at Ancient Epidaurus Theatre (~150 km from Athens, Peloponnese).
       </div>
       <div class="placeholder">Itinerary to be planned — see Sights + Hidden tabs for options</div>
     </section>
@@ -1051,7 +1092,7 @@
       <div class="section-title">Sun Jul 5 · Fly Home</div>
       <div class="alert green">
         <strong>Return Flight · Delta 297</strong>
-        Wife — Seat 43G · Conf •••••• (in email) &nbsp;|&nbsp; Brett — Seat TBD · Conf TBD · Meal: Lunch
+        Rachael — Seat 43G · Conf •••••• (in email) &nbsp;|&nbsp; Brett — Seat TBD · Conf TBD · Meal: Lunch
       </div>
       <div class="timeline">
         <div class="timeline-item note">
@@ -1604,6 +1645,42 @@
   <!-- ═══════════════════════════════════════════════════════════ -->
   <div id="tab-conference" class="tab-content">
 
+    <!-- ── Getting there & on-site logistics ── -->
+    <section>
+      <div class="section-title">Getting There &amp; On-Site</div>
+
+      <div class="alert blue">
+        <strong>Hotel → Venue · Metro Line 3, direct (no change)</strong>
+        Walk ~8–10 min from <b>Kleomenous 16</b> down to <b>Evangelismos</b> station →
+        Metro <b>Line 3 (Blue)</b> heading toward Piraeus/Dimotiko Theatro →
+        get off at <b>Kerameikos</b> (~6 stops, ~15 min) → ~6 min walk to Technopolis.
+        Single ticket €1.20 at the station machines — grab a multi-day pass on Day&nbsp;1 to skip the line each morning.
+      </div>
+
+      <div class="alert gold">
+        <strong>Prefer a taxi? Show the driver this</strong>
+        «Τεχνόπολη Δήμου Αθηναίων, Πειραιώς 100, Γκάζι»<br>
+        <b>(Technopolis, 100 Pireos St, Gazi)</b> · ~€8–12 · 15–20 min depending on traffic.
+        Easiest is the <b>FREENOW / Uber / Beat</b> app — fixed fare, no language or haggling.
+      </div>
+
+      <div class="alert">
+        <strong>On-site essentials</strong>
+        • <b>Registration:</b> opens 7:30 Wed, 8:00 Thu &amp; Fri<br>
+        • <b>Lunch &amp; posters:</b> served on-site (Poster Session 1 Wed, 2 Thu)<br>
+        • <b>Coffee:</b> mid-morning &amp; mid-afternoon breaks daily<br>
+        • <b>Dress:</b> business-casual — <em>TODO: confirm with program</em><br>
+        • <b>WiFi:</b> <em>TODO: get network + password at the registration desk</em>
+      </div>
+
+      <div class="alert green">
+        <strong>♥ Meet Brett for lunch</strong>
+        Brett's on his own nearby all three days — the lunch breaks are the natural meet-up windows:
+        <b>Wed 12:30–14:00</b> · <b>Thu 12:45–14:15</b> · <b>Fri 12:45–13:45</b>.
+        Gazi/Kerameikos has cafés a short walk from Technopolis — text a spot the morning of.
+      </div>
+    </section>
+
     <section>
       <div class="section-title">International Aphasia Rehabilitation Conference</div>
       <div class="alert blue">
@@ -1626,6 +1703,13 @@
           <button class="cf-btn" onclick="filterConf(this,'type','keynote')">Keynote</button>
           <button class="cf-btn" onclick="filterConf(this,'type','platform')">Platform</button>
           <button class="cf-btn" onclick="filterConf(this,'type','panel')">Panel</button>
+        </div>
+      </div>
+      <div class="conf-filter-group">
+        <div class="conf-filter-label">Saved</div>
+        <div class="conf-filters">
+          <button class="cf-btn active" onclick="filterConf(this,'fav','all')">All</button>
+          <button class="cf-btn" onclick="filterConf(this,'fav','saved')">★ Saved only</button>
         </div>
       </div>
     </section>
@@ -2034,6 +2118,8 @@
           <div class="timeline-time">16:30</div>
           <div class="timeline-content">
             <div class="title">Depart for Social Event</div>
+            <div class="sub">Possible venue: <b>Ancient Theatre of Epidaurus</b> (~150 km / ~2 hrs from Athens, Peloponnese) — would likely be a full evening out.</div>
+            <div class="sub" style="margin-top:4px"><em>TODO: confirm venue, whether there's a conference coach, return time, and dress code. If it's Epidaurus, plan for a late night and check if Brett can join.</em></div>
           </div>
         </div>
       </div>
@@ -2143,22 +2229,30 @@
       });
     }
 
-    var confFilters = { day: 'all', type: 'all' };
+    var confFilters = { day: 'all', type: 'all', fav: 'all' };
 
     function filterConf(btn, filterKey, value) {
       confFilters[filterKey] = value;
       btn.closest('.conf-filters').querySelectorAll('.cf-btn').forEach(function(b) { b.classList.remove('active'); });
       btn.classList.add('active');
+      applyConfFilter();
+    }
+
+    function applyConfFilter() {
       var blocks = document.querySelectorAll('.conf-block');
-      var headers = document.querySelectorAll('.conf-day-header');
+      var visibleByDay = {};
       blocks.forEach(function(block) {
         var dayMatch = confFilters.day === 'all' || block.dataset.day === confFilters.day;
         var typeMatch = confFilters.type === 'all' || block.dataset.type === confFilters.type;
-        block.style.display = (dayMatch && typeMatch) ? '' : 'none';
+        // "Saved only" shows just starred sessions (breaks have no sid, so they drop out).
+        var favMatch = confFilters.fav !== 'saved' || (block.dataset.sid && confFavs.has(block.dataset.sid));
+        var show = dayMatch && typeMatch && favMatch;
+        block.style.display = show ? '' : 'none';
+        if (show) visibleByDay[block.dataset.day] = true;
       });
-      headers.forEach(function(h) {
-        var dayMatch = confFilters.day === 'all' || h.dataset.day === confFilters.day;
-        h.style.display = dayMatch ? '' : 'none';
+      // A day header is shown only if at least one of its blocks is visible.
+      document.querySelectorAll('.conf-day-header').forEach(function(h) {
+        h.style.display = visibleByDay[h.dataset.day] ? '' : 'none';
       });
     }
 
@@ -2168,6 +2262,71 @@
       list.style.display = hidden ? 'block' : 'none';
       btn.textContent = hidden ? 'Hide ▴' : 'Show presentations ▾';
     }
+
+    /* ─── Conference favorites (★) + per-session notes (offline, localStorage) ─── */
+    var confFavs = new Set();
+    (function () {
+      var FAV_KEY = 'confFavs', NOTE_KEY = 'confNotes';
+      try { confFavs = new Set(JSON.parse(localStorage.getItem(FAV_KEY) || '[]')); } catch (e) { confFavs = new Set(); }
+      var notes = {};
+      try { notes = JSON.parse(localStorage.getItem(NOTE_KEY) || '{}') || {}; } catch (e) { notes = {}; }
+
+      function saveFavs() { localStorage.setItem(FAV_KEY, JSON.stringify(Array.from(confFavs))); }
+      function saveNotes() { localStorage.setItem(NOTE_KEY, JSON.stringify(notes)); }
+      function slug(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 32); }
+
+      var SESSION_TYPES = { keynote: 1, platform: 1, panel: 1 };
+      document.querySelectorAll('.conf-block').forEach(function (block) {
+        if (!SESSION_TYPES[block.dataset.type]) return;             // skip breaks/meals/transit
+        var content = block.querySelector('.timeline-content');
+        var titleEl = content && content.querySelector('.title');
+        if (!titleEl) return;
+        var time = ((block.querySelector('.timeline-time') || {}).textContent || '').trim();
+        var sid = block.dataset.day + '|' + time + '|' + slug(titleEl.textContent);
+        block.dataset.sid = sid;
+
+        // ── ★ favorite toggle: wrap the title in a flex row with the star ──
+        var row = document.createElement('div');
+        row.className = 'cf-title-row';
+        titleEl.parentNode.insertBefore(row, titleEl);
+        row.appendChild(titleEl);
+        var star = document.createElement('button');
+        star.type = 'button';
+        star.className = 'cf-star' + (confFavs.has(sid) ? ' on' : '');
+        star.setAttribute('aria-label', 'Save this session');
+        star.textContent = confFavs.has(sid) ? '★' : '☆';
+        row.appendChild(star);
+        star.addEventListener('click', function () {
+          if (confFavs.has(sid)) { confFavs.delete(sid); star.classList.remove('on'); star.textContent = '☆'; }
+          else { confFavs.add(sid); star.classList.add('on'); star.textContent = '★'; }
+          saveFavs();
+          if (confFilters.fav === 'saved') applyConfFilter();
+        });
+
+        // ── 📝 per-session note ──
+        var noteToggle = document.createElement('button');
+        noteToggle.type = 'button';
+        noteToggle.className = 'cf-note-toggle' + (notes[sid] ? ' has-note' : '');
+        noteToggle.textContent = notes[sid] ? '📝 Note ▾' : '＋ Add note';
+        content.appendChild(noteToggle);
+        var box = document.createElement('textarea');
+        box.className = 'cf-note-box';
+        box.placeholder = 'Your notes for this session…';
+        box.style.display = 'none';
+        box.value = notes[sid] || '';
+        content.appendChild(box);
+        noteToggle.addEventListener('click', function () {
+          var open = box.style.display === 'none';
+          box.style.display = open ? 'block' : 'none';
+          if (open) box.focus();
+        });
+        box.addEventListener('input', function () {
+          if (box.value.trim()) { notes[sid] = box.value; noteToggle.classList.add('has-note'); noteToggle.textContent = '📝 Note ▾'; }
+          else { delete notes[sid]; noteToggle.classList.remove('has-note'); noteToggle.textContent = '＋ Add note'; }
+          saveNotes();
+        });
+      });
+    })();
   </script>
 
 </body>
