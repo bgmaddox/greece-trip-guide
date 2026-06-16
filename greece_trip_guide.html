@@ -1,0 +1,2174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Athens, Greece — June 28 – July 6, 2026</title>
+
+  <!-- ═══ PWA ═══ -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0a0e14">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Athens 2026">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+
+  <!-- ═══ FONTS ═══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0e14;
+      --surface: #131920;
+      --surface2: #1b2330;
+      --border: #263040;
+      --text: #eef1f5;
+      --muted: #7a8fa8;
+      --accent: #2e86de;      /* Aegean blue */
+      --gold: #e8a020;        /* warm gold for alerts/food */
+      --green: #3cb878;
+      --red: #e05252;
+      --purple: #9b7ed4;
+      --teal: #1abc9c;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      padding-bottom: 76px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── HEADER ─── */
+    .header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 16px 10px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header h1 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.3px;
+    }
+    .header p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ─── TAB NAV ─── */
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      background: var(--surface);
+      border-bottom: 2px solid var(--border);
+      scrollbar-width: none;
+      padding: 0 8px;
+    }
+    .tab-nav::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      flex-shrink: 0;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 10px 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      letter-spacing: 0.3px;
+    }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .tab-btn:hover:not(.active) { color: var(--text); }
+
+    /* ─── TABS ─── */
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* ─── SECTIONS ─── */
+    section {
+      padding: 20px 16px 8px;
+    }
+    section + section {
+      border-top: 1px solid var(--border);
+    }
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    /* ─── QUICK REF GRID ─── */
+    .ref-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .ref-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+    }
+    .ref-card .label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .ref-card .value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .ref-card .value.accent { color: var(--accent); }
+    .ref-card .value.gold   { color: var(--gold); }
+    .ref-card .value.green  { color: var(--green); }
+    .ref-card .value.red    { color: var(--red); }
+
+    /* ─── TIMELINE ─── */
+    .timeline { display: flex; flex-direction: column; gap: 2px; }
+    .timeline-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .timeline-time {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 58px;
+      padding-top: 10px;
+    }
+    .timeline-content {
+      flex: 1;
+      background: var(--surface2);
+      border-left: 3px solid var(--border);
+      border-radius: 0 8px 8px 0;
+      padding: 10px 12px;
+    }
+    .timeline-content .title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .timeline-content .sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .timeline-item.key .timeline-content {
+      border-left-color: var(--accent);
+      background: #0d1e30;
+    }
+    .timeline-item.food .timeline-content  { border-left-color: var(--green); }
+    .timeline-item.transit .timeline-content { border-left-color: var(--gold); }
+    .timeline-item.note .timeline-content  { border-left-color: var(--purple); }
+
+    /* ─── PLACE CARDS ─── */
+    .place-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+    .place-card .place-name {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .place-card .place-meta {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .place-card .place-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-bottom: 8px;
+    }
+    .place-card .tip {
+      font-size: 12px;
+      color: var(--gold);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .place-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    /* ─── TAGS ─── */
+    .tag {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 3px 8px;
+      border-radius: 20px;
+    }
+    .tag.green  { background: #122e20; color: var(--green); }
+    .tag.blue   { background: #0d2040; color: var(--accent); }
+    .tag.gold   { background: #2a1e00; color: var(--gold); }
+    .tag.red    { background: #2d1515; color: var(--red); }
+    .tag.purple { background: #1e1830; color: var(--purple); }
+    .tag.teal   { background: #0d2820; color: var(--teal); }
+
+    /* ─── MAP BUTTON ─── */
+    .map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 8px;
+      background: #0d2040;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 20px;
+      text-decoration: none;
+      border: 1px solid #1a3d6e;
+    }
+
+    /* ─── STEP LIST ─── */
+    .step-list { list-style: none; counter-reset: steps; }
+    .step-list li {
+      counter-increment: steps;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .step-list li:last-child { border-bottom: none; }
+    .step-list li::before {
+      content: counter(steps);
+      min-width: 26px;
+      height: 26px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .step-list li span { font-size: 14px; line-height: 1.5; }
+    .step-list li span strong { color: var(--accent); }
+
+    /* ─── ALERTS ─── */
+    .alert {
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .alert.gold   { background: #2a1e00; border-left: 3px solid var(--gold); }
+    .alert.red    { background: #2d1515; border-left: 3px solid var(--red); }
+    .alert.green  { background: #0d2419; border-left: 3px solid var(--green); }
+    .alert.blue   { background: #0d1e30; border-left: 3px solid var(--accent); }
+    .alert.purple { background: #1a1430; border-left: 3px solid var(--purple); }
+    .alert strong {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 3px;
+      opacity: 0.7;
+    }
+
+    /* ─── CATEGORY LABEL ─── */
+    .category-label {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--purple);
+      margin: 18px 0 8px;
+    }
+    .category-label:first-of-type { margin-top: 0; }
+
+    /* ─── PHRASE TABLE ─── */
+    .phrase-table { width: 100%; border-collapse: collapse; }
+    .phrase-table tr { border-bottom: 1px solid var(--border); }
+    .phrase-table tr:last-child { border-bottom: none; }
+    .phrase-table td {
+      padding: 8px 4px;
+      font-size: 13px;
+      vertical-align: top;
+    }
+    .phrase-table td:first-child { color: var(--muted); width: 40%; }
+    .phrase-table td:last-child  { color: var(--accent); font-weight: 600; }
+
+    /* ─── SCAM ROW ─── */
+    .scam-item {
+      display: flex;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .scam-item:last-child { border-bottom: none; }
+    .scam-icon {
+      min-width: 28px;
+      height: 28px;
+      background: #2d1515;
+      color: var(--red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .scam-title { font-weight: 700; margin-bottom: 2px; }
+    .scam-desc  { color: var(--muted); line-height: 1.4; }
+
+    /* ─── DIVIDER ─── */
+    hr { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
+
+    /* ─── PLACEHOLDER ─── */
+    .placeholder {
+      background: var(--surface2);
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    /* ─── TRANSPORT CARD ─── */
+    .transport-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .transport-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+    }
+    .transport-row .t-label { font-size: 14px; font-weight: 600; }
+    .transport-row .t-detail { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .transport-row .t-cost {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--green);
+      text-align: right;
+    }
+    .transport-row .t-time {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* ─── SCROLL HINT ─── */
+    .scroll-hint {
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+      padding: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ─── CONFERENCE FILTERS ─── */
+    .conf-filter-group { margin-bottom: 10px; }
+    .conf-filter-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .conf-filters { display: flex; flex-wrap: wrap; gap: 6px; }
+    .cf-btn {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .cf-btn.active {
+      background: #0d2040;
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .conf-day-header {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      padding: 14px 16px 6px;
+      border-top: 1px solid var(--border);
+    }
+    .conf-block { padding: 0 16px 4px; }
+    .cf-toggle {
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 0;
+      cursor: pointer;
+      display: block;
+      margin-top: 6px;
+    }
+    .cf-pres { padding-top: 4px; }
+    .cf-pres-item {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 5px 0;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.45;
+    }
+    .cf-pres-item:last-child { border-bottom: none; }
+    .cf-op {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--teal);
+      margin-right: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .cf-inline-tag {
+      display: inline;
+      padding: 1px 6px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-radius: 20px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════ */
+    /*  VISUAL JOURNEY — Stitch-inspired layer                      */
+    /* ═══════════════════════════════════════════════════════════ */
+
+    /* ─── HERO BANNER ─── */
+    .hero {
+      position: relative;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 18px 16px 20px;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg,
+        rgba(10,14,20,0.15) 0%,
+        rgba(10,14,20,0.55) 55%,
+        rgba(10,14,20,0.96) 100%);
+    }
+    .hero > * { position: relative; z-index: 1; }
+    .hero .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--teal);
+      margin-bottom: 6px;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+    }
+    .hero h2 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1.05;
+      color: #fff;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.55);
+    }
+    .hero .hero-sub {
+      font-size: 13px;
+      color: #d6e0ec;
+      margin-top: 6px;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+    }
+
+    /* ─── COUNTDOWN ─── */
+    .countdown {
+      display: flex;
+      gap: 0;
+      margin-top: 16px;
+      background: rgba(13,19,26,0.78);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .countdown .cd-unit {
+      flex: 1;
+      text-align: center;
+      padding: 12px 4px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .countdown .cd-unit:last-child { border-right: none; }
+    .countdown .cd-num {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+    }
+    .countdown .cd-label {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--teal);
+      margin-top: 5px;
+    }
+    .countdown.done .cd-num { color: var(--gold); }
+
+    /* ─── PLAYFAIR SECTION TITLES ─── */
+    .section-title { font-family: "Inter", sans-serif; }
+
+    /* ─── PHOTO PLACE CARDS ─── */
+    .place-card.photo {
+      padding: 0;
+      overflow: hidden;
+    }
+    .place-card.photo .pc-img {
+      position: relative;
+      height: 150px;
+      background-size: cover;
+      background-position: center;
+    }
+    .place-card.photo .pc-img::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,14,20,0) 40%, rgba(19,25,32,0.9) 100%);
+    }
+    .place-card.photo .pc-img .pc-name {
+      position: absolute;
+      left: 14px;
+      bottom: 10px;
+      z-index: 1;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    }
+    .place-card.photo .pc-body { padding: 12px 14px 14px; }
+
+    /* ─── BOTTOM NAV ─── */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      display: flex;
+      background: rgba(19,25,32,0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    .bottom-nav button {
+      flex: 1;
+      background: none;
+      border: none;
+      color: var(--muted);
+      padding: 8px 2px 7px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    .bottom-nav button svg {
+      width: 21px;
+      height: 21px;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      fill: none;
+    }
+    .bottom-nav button.active { color: var(--teal); }
+
+    /* ─── INSTALL HINT ─── */
+    .install-hint {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      margin: 12px 16px 0;
+      background: var(--surface2);
+      border: 1px solid var(--teal);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: var(--text);
+    }
+    .install-hint.show { display: flex; }
+    .install-hint button {
+      margin-left: auto;
+      background: var(--teal);
+      color: #062019;
+      border: none;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 7px 14px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .install-hint .ih-close {
+      background: none;
+      color: var(--muted);
+      font-size: 18px;
+      padding: 0 4px;
+      margin-left: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HEADER ═══ -->
+  <div class="header">
+    <h1>Athens, Greece</h1>
+    <p>June 28 – July 6, 2026 &nbsp;·&nbsp; Brett &amp; Wife</p>
+  </div>
+
+  <!-- ═══ TAB NAV ═══ -->
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="showTab('overview')">Overview</button>
+    <button class="tab-btn" onclick="showTab('day1')">Jun 27–28</button>
+    <button class="tab-btn" onclick="showTab('day2')">Jun 30 ♥</button>
+    <button class="tab-btn" onclick="showTab('day3')">Jul 1</button>
+    <button class="tab-btn" onclick="showTab('day4')">Jul 2</button>
+    <button class="tab-btn" onclick="showTab('day5')">Jul 3</button>
+    <button class="tab-btn" onclick="showTab('day6')">Jul 4 ♥</button>
+    <button class="tab-btn" onclick="showTab('day7')">Jul 5 ♥</button>
+    <button class="tab-btn" onclick="showTab('day8')">Jul 6</button>
+    <button class="tab-btn" onclick="showTab('conference')">Conf</button>
+    <button class="tab-btn" onclick="showTab('attractions')">Sights</button>
+    <button class="tab-btn" onclick="showTab('hidden')">Hidden</button>
+    <button class="tab-btn" onclick="showTab('practical')">Practical</button>
+  </div>
+  <div class="scroll-hint">← scroll tabs →</div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: OVERVIEW                                              -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div id="tab-overview" class="tab-content active">
+
+    <div class="hero" style="background-image:url('https://images.unsplash.com/photo-1555993539-1732b0258235?w=1200&q=70')">
+      <div class="eyebrow">Next Adventure</div>
+      <h2>Athens, Greece</h2>
+      <div class="hero-sub">June 28 – July 6, 2026 · Brett &amp; Wife</div>
+      <div class="countdown" id="countdown">
+        <div class="cd-unit"><div class="cd-num" id="cd-days">—</div><div class="cd-label">Days</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-hrs">—</div><div class="cd-label">Hrs</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-min">—</div><div class="cd-label">Min</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-sec">—</div><div class="cd-label">Sec</div></div>
+      </div>
+    </div>
+
+    <div class="install-hint" id="installHint">
+      <span>📲 Install this guide to your phone for offline access in Greece.</span>
+      <button id="installBtn">Install</button>
+      <button class="ih-close" id="installClose" aria-label="Dismiss">×</button>
+    </div>
+
+    <section>
+      <div class="section-title">Trip at a Glance</div>
+      <div class="ref-grid">
+        <div class="ref-card">
+          <div class="label">Destination</div>
+          <div class="value accent">Athens, Greece</div>
+        </div>
+        <div class="ref-card">
+          <div class="label">Dates</div>
+          <div class="value">Jun 28 – Jul 6</div>
+        </div>
+        <div class="ref-card">
+          <div class="label">Flight</div>
+          <div class="value gold">TBD — Book Now</div>
+        </div>
+        <div class="ref-card">
+          <div class="label">Route</div>
+          <div class="value">ATL → ATH (Delta)</div>
+        </div>
+        <div class="ref-card">
+          <div class="label">Lodging</div>
+          <div class="value gold">TBD</div>
+        </div>
+        <div class="ref-card">
+          <div class="label">Currency</div>
+          <div class="value">Euro (€)</div>
+        </div>
+        <div class="ref-card">
+          <div class="label">July High Temp</div>
+          <div class="value red">95–105°F</div>
+        </div>
+        <div class="ref-card">
+          <div class="label">Time Zone</div>
+          <div class="value">EEST (UTC+3)</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Week Structure</div>
+      <div class="alert blue">
+        <strong>Conference Confirmed: IARC 2026</strong>
+        International Aphasia Rehabilitation Conference · July 1–3 (Wed–Fri) · Technopolis City of Athens
+      </div>
+      <div class="timeline">
+        <div class="timeline-item transit">
+          <div class="timeline-time">Sun Jun 28</div>
+          <div class="timeline-content">
+            <div class="title">Fly ATL → ATH</div>
+            <div class="sub">Delta nonstop departs ~3:25–5:20 PM · ~10h45m flight</div>
+          </div>
+        </div>
+        <div class="timeline-item key">
+          <div class="timeline-time">Mon Jun 29</div>
+          <div class="timeline-content">
+            <div class="title">Arrive Athens · Together ♥</div>
+            <div class="sub">Arrive ~7–9 AM local · settle in · light first-day explore</div>
+          </div>
+        </div>
+        <div class="timeline-item key">
+          <div class="timeline-time">Tue Jun 30</div>
+          <div class="timeline-content">
+            <div class="title">Full Free Day · Together ♥</div>
+            <div class="sub">First full day together before conference starts</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">Wed Jul 1</div>
+          <div class="timeline-content">
+            <div class="title">Conference Day 1 · Brett Solo</div>
+            <div class="sub">IARC 2026 begins at Technopolis · Brett explores independently</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">Thu Jul 2</div>
+          <div class="timeline-content">
+            <div class="title">Conference Day 2 · Brett Solo</div>
+            <div class="sub">Brett explores independently</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">Fri Jul 3</div>
+          <div class="timeline-content">
+            <div class="title">Conference Day 3 · Brett Solo</div>
+            <div class="sub">IARC last day · note: conference may have evening event at Epidaurus</div>
+          </div>
+        </div>
+        <div class="timeline-item key">
+          <div class="timeline-time">Sat Jul 4</div>
+          <div class="timeline-content">
+            <div class="title">Together ♥ — Day 1 Post-Conference</div>
+            <div class="sub">Full day Athens · day trip possible (Aegina, coast, Vouliagmeni)</div>
+          </div>
+        </div>
+        <div class="timeline-item key">
+          <div class="timeline-time">Sun Jul 5</div>
+          <div class="timeline-content">
+            <div class="title">Together ♥ — Last Full Day</div>
+            <div class="sub">Sunday Changing of Guard ceremony 11 AM · farewell dinner</div>
+          </div>
+        </div>
+        <div class="timeline-item transit">
+          <div class="timeline-time">Mon Jul 6</div>
+          <div class="timeline-content">
+            <div class="title">Fly Home · ATH → ATL</div>
+            <div class="sub">Check-in 3 hrs before departure · Metro Line 3 → Airport</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Flight — Confirmed</div>
+      <div class="alert green">
+        <strong>Outbound · Jun 27 → Jun 28 · Delta 296</strong>
+        ATL → ATH · Departs <strong>3:30 PM</strong> · Arrives <strong>9:20 AM</strong> (Jun 28) · Nonstop · 10h 50m<br>
+        Wife: Seat 43H · Conf •••••• (in email) &nbsp;|&nbsp; Brett: Seat TBD · Conf TBD
+      </div>
+      <div class="alert green">
+        <strong>Return · Jul 5 · Delta 297</strong>
+        ATH → ATL · Departs <strong>11:30 AM</strong> · Arrives <strong>5:02 PM</strong> · Nonstop · 12h 32m<br>
+        Wife: Seat 43G · Conf •••••• (in email) &nbsp;|&nbsp; Brett: Seat TBD · Conf TBD
+      </div>
+      <div class="alert blue">
+        <strong>At the Airport</strong>
+        ATL Terminal I for both flights. Check in online 24 hrs before. Metro Line 3 from Athens city center → ATH Airport: €9, ~40 min. Allow 3 hrs before international departure.
+      </div>
+    </section>
+
+  </div><!-- /tab-overview -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: DAY 1 — Jun 27–28 (Travel + Arrival)                 -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div id="tab-day1" class="tab-content">
+
+    <section>
+      <div class="section-title">Jun 27 (Sat) → Jun 28 (Sun) · Travel Day</div>
+      <div class="alert green" style="margin-bottom:12px">
+        <strong>Flight Confirmation · Delta 296</strong>
+        Wife — Seat 43H · Conf •••••• (in email) · FF# •••••• (in wallet) &nbsp;|&nbsp; Brett — Seat TBD · Conf TBD
+      </div>
+      <div class="timeline">
+        <div class="timeline-item transit">
+          <div class="timeline-time">3:30 PM</div>
+          <div class="timeline-content">
+            <div class="title">Depart Atlanta (ATL)</div>
+            <div class="sub">Delta 296 · Nonstop · 10h 50m · Meal included</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">In-flight</div>
+          <div class="timeline-content">
+            <div class="title">~10h 50m</div>
+            <div class="sub">Sleep if possible — you land mid-morning Athens time</div>
+          </div>
+        </div>
+        <div class="timeline-item key">
+          <div class="timeline-time">9:20 AM</div>
+          <div class="timeline-content">
+            <div class="title">Arrive Athens (ATH)</div>
+            <div class="sub">Eleftherios Venizelos Airport · Sunday Jun 28</div>
+          </div>
+        </div>
+        <div class="timeline-item transit">
+          <div class="timeline-time">Airport</div>
+          <div class="timeline-content">
+            <div class="title">Metro Line 3 → City Center</div>
+            <div class="sub">€9 one-way · ~40 min to Syntagma or Monastiraki · runs every 30 min from 6:30 AM</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">Mid-AM</div>
+          <div class="timeline-content">
+            <div class="title">Check In / Drop Bags</div>
+            <div class="sub">TBD — lodging to be confirmed</div>
+          </div>
+        </div>
+        <div class="timeline-item food">
+          <div class="timeline-content">
+            <div class="title">First Meal — Plaka or Monastiraki</div>
+            <div class="sub">Light: Greek coffee, tiropita (cheese pie), or full taverna breakfast</div>
+          </div>
+        </div>
+        <div class="timeline-item note">
+          <div class="timeline-content">
+            <div class="title">Advice: Take It Easy</div>
+            <div class="sub">You've been awake ~20+ hours. Explore lightly, eat well, sleep early. The real agenda starts Day 2.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Airport → City: Your Options</div>
+      <div class="transport-grid">
+        <div class="transport-row">
+          <div>
+            <div class="t-label">Metro Line 3</div>
+            <div class="t-detail">Syntagma or Monastiraki · every 30 min from 6:30 AM · recommended</div>
+          </div>
+          <div>
+            <div class="t-cost">€9</div>
+            <div class="t-time">~40 min</div>
+          </div>
+        </div>
+        <div class="transport-row">
+          <div>
+            <div class="t-label">Official Yellow Taxi</div>
+            <div class="t-detail">Fixed by law · Exit 3 rank only · insist on flat rate</div>
+          </div>
+          <div>
+            <div class="t-cost">€40</div>
+            <div class="t-time">~35–40 min</div>
+          </div>
+        </div>
+        <div class="transport-row">
+          <div>
+            <div class="t-label">Express Bus X95</div>
+            <div class="t-detail">To Syntagma · 24-hour service · slowest option</div>
+          </div>
+          <div>
+            <div class="t-cost">€5.50</div>
+            <div class="t-time">~60 min</div>
+          </div>
+        </div>
+        <div class="transport-row">
+          <div>
+            <div class="t-label">Pre-booked Transfer</div>
+            <div class="t-detail">Meet-and-greet · English driver · good for red-eye arrivals</div>
+          </div>
+          <div>
+            <div class="t-cost">€45–65</div>
+            <div class="t-time">~35–40 min</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /tab-day1 -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: DAY 2 — Jun 30 (Solo)                                 -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div id="tab-day2" class="tab-content">
+    <section>
+      <div class="section-title">Tue Jun 30 · Together ♥ — First Full Day</div>
+      <div class="alert green">
+        <strong>Free Day — Both Together</strong>
+        Your first full uninterrupted day. Conference doesn't start until tomorrow. Best day to hit the Acropolis together (8 AM slot — book ahead). Energy is high, jet lag is manageable.
+      </div>
+      <div class="placeholder">Itinerary to be planned — see Sights + Hidden tabs for options</div>
+    </section>
+  </div><!-- /tab-day2 -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: DAY 3 — Jul 1 (Solo)                                  -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div id="tab-day3" class="tab-content">
+    <section>
+      <div class="section-title">Wed Jul 1 · Conference Day 1 — Brett Solo</div>
+      <div class="alert blue">
+        <strong>IARC 2026 Begins</strong>
+        Wife at Technopolis City of Athens · Brett on his own for 3 days.
+      </div>
+      <div class="placeholder">Itinerary to be planned — see Sights + Hidden tabs for options</div>
+    </section>
+  </div><!-- /tab-day3 -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: DAY 4 — Jul 2 (Solo)                                  -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div id="tab-day4" class="tab-content">
+    <section>
+      <div class="section-title">Thu Jul 2 · Conference Day 2 — Brett Solo</div>
+      <div class="alert blue">
+        <strong>Wife at Conference</strong>
+        Full day on your own.
+      </div>
+      <div class="placeholder">Itinerary to be planned — see Sights + Hidden tabs for options</div>
+    </section>
+  </div><!-- /tab-day4 -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: DAY 5 — Jul 3 (Solo, conference ends)                 -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div id="tab-day5" class="tab-content">
+    <section>
+      <div class="section-title">Fri Jul 3 · Conference Day 3 — Brett Solo</div>
+      <div class="alert blue">
+        <strong>IARC Last Day</strong>
+        Conference ends today. Check with wife on evening plans — conference may include a social event at Ancient Epidaurus Theatre (~150 km from Athens, Peloponnese).
+      </div>
+      <div class="placeholder">Itinerary to be planned — see Sights + Hidden tabs for options</div>
+    </section>
+  </div><!-- /tab-day5 -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: DAY 6 — Jul 4 (Together Day 1 post-conference)        -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div id="tab-day6" class="tab-content">
+    <section>
+      <div class="section-title">Sat Jul 4 · Together ♥ — Day 1 Post-Conference</div>
+      <div class="alert blue">
+        <strong>Note:</strong> July 4th has no American holiday significance here — a normal summer Saturday in Athens. Good day for a day trip: Aegina island (~40 min ferry), Vouliagmeni thermal lake, or the Athenian Riviera coast.
+      </div>
+      <div class="placeholder">Itinerary to be planned — day trip? Aegina? Vouliagmeni Lake?</div>
+    </section>
+  </div><!-- /tab-day6 -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: DAY 7 — Jul 5 (Together Last Full Day)                -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div id="tab-day7" class="tab-content">
+    <section>
+      <div class="section-title">Sun Jul 5 · Fly Home</div>
+      <div class="alert green">
+        <strong>Return Flight · Delta 297</strong>
+        Wife — Seat 43G · Conf •••••• (in email) &nbsp;|&nbsp; Brett — Seat TBD · Conf TBD · Meal: Lunch
+      </div>
+      <div class="timeline">
+        <div class="timeline-item note">
+          <div class="timeline-time">8:00 AM</div>
+          <div class="timeline-content">
+            <div class="title">Head to Airport</div>
+            <div class="sub">Metro Line 3 → ATH · ~40 min · depart hotel by 8 AM to be safe</div>
+          </div>
+        </div>
+        <div class="timeline-item transit">
+          <div class="timeline-time">11:30 AM</div>
+          <div class="timeline-content">
+            <div class="title">Depart Athens (ATH)</div>
+            <div class="sub">Delta 297 · Nonstop · 12h 32m</div>
+          </div>
+        </div>
+        <div class="timeline-item key">
+          <div class="timeline-time">5:02 PM</div>
+          <div class="timeline-content">
+            <div class="title">Arrive Atlanta (ATL)</div>
+            <div class="sub">Terminal I · same day arrival</div>
+          </div>
+        </div>
+      </div>
+      <div class="alert gold" style="margin-top:12px">
+        <strong>Sunday Tip — if time before airport</strong>
+        The Syntagma Changing of the Guard grand ceremony is at 11:00 AM every Sunday — but with an 11:30 flight, skip it this day. Grab a final Greek coffee and pastry near the hotel instead.
+      </div>
+    </section>
+  </div><!-- /tab-day7 -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: DAY 8 — Jul 6 (Fly Home)                             -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div id="tab-day8" class="tab-content">
+    <section>
+      <div class="section-title">Mon Jul 6 · Fly Home</div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="title">Check Out · Head to Airport</div>
+            <div class="sub">TBD based on flight time — confirm once tickets are booked</div>
+          </div>
+        </div>
+        <div class="timeline-item transit">
+          <div class="timeline-content">
+            <div class="title">ATH → ATL</div>
+            <div class="sub">Check delta.com for return flight time once booked</div>
+          </div>
+        </div>
+      </div>
+      <div class="alert blue">
+        <strong>Airport Note</strong>
+        Plan to arrive at ATH at least 3 hours before an international departure. Metro Line 3 from Syntagma or Monastiraki is the easiest option (€9, ~40 min).
+      </div>
+    </section>
+  </div><!-- /tab-day8 -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: ATTRACTIONS (Mainstream Sights)                       -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div id="tab-attractions" class="tab-content">
+
+    <div class="hero" style="background-image:url('https://images.unsplash.com/photo-1603565816030-6b389eeb23cb?w=1200&q=70')">
+      <div class="eyebrow">Explore Athens</div>
+      <h2>The Sights</h2>
+      <div class="hero-sub">Ancient wonders, neighborhoods &amp; museums</div>
+    </div>
+
+    <section>
+      <div class="section-title">Must-See Athens</div>
+
+      <div class="category-label">The Ancient City</div>
+
+      <div class="place-card photo">
+        <div class="pc-img" style="background-image:url('https://images.unsplash.com/photo-1503152394-c571994fd383?w=600&q=65')">
+          <div class="pc-name">Acropolis &amp; Parthenon</div>
+        </div>
+        <div class="pc-body">
+          <div class="place-meta">Ancient Hill · ~2–3 hrs · €30 (or combo ticket)</div>
+          <div class="place-desc">The crown jewel. The Parthenon, Erechtheion (with Caryatid porch), Temple of Athena Nike, and the Propylaea gateway. No straight lines — subtle curves were engineered to correct for optical distortion.</div>
+          <div class="tip">⚡ Book the 8 AM slot — cooler, no crowds, cruise ships haven't docked yet. In July, midday is brutal and the site may close 1–5 PM in extreme heat (&gt;40°C).</div>
+          <div class="tags">
+            <span class="tag blue">Must-Do</span>
+            <span class="tag gold">Book Ahead</span>
+            <span class="tag red">Hot at Midday</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="place-name">Acropolis Museum</div>
+        <div class="place-meta">South Slope · ~2–3 hrs · €20</div>
+        <div class="place-desc">World-class museum built above an excavated ancient neighborhood (visible through glass floors). The top-floor Parthenon Gallery is oriented to mirror the Parthenon itself and displays the original frieze alongside casts of the British Museum pieces — a deliberate statement.</div>
+        <div class="tip">⚡ Save for 1–3 PM — fully air-conditioned, perfect midday refuge. Rooftop restaurant has direct Parthenon views.</div>
+        <div class="tags">
+          <span class="tag blue">Must-Do</span>
+          <span class="tag green">A/C Refuge</span>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="place-name">Ancient Agora &amp; Temple of Hephaestus</div>
+        <div class="place-meta">Monastiraki · ~1.5–2 hrs · included in Acropolis combo</div>
+        <div class="place-desc">The civic heart of ancient Athens — Socrates walked here. The Temple of Hephaestus is the best-preserved ancient Greek temple in existence (survived because it was converted to a church). The reconstructed Stoa of Attalos houses an excellent museum.</div>
+        <div class="tip">⚡ Visit 8–10 AM for shade and cool air. Stoa museum is air-conditioned. Monastiraki flea market is right next door.</div>
+        <div class="tags">
+          <span class="tag blue">Must-Do</span>
+          <span class="tag teal">Combo Ticket</span>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="place-name">Temple of Olympian Zeus</div>
+        <div class="place-meta">Near Syntagma · ~30–45 min · included in Acropolis combo</div>
+        <div class="place-desc">Once the largest temple in the ancient world. Construction started 6th century BC, finished 638 years later. Only 15 of 104 original Corinthian columns remain — but they are 17 meters tall. Scale hits differently in person. Hadrian's Arch stands nearby.</div>
+        <div class="tags">
+          <span class="tag teal">Combo Ticket</span>
+          <span class="tag gold">Quick Stop</span>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="place-name">Roman Agora &amp; Tower of the Winds</div>
+        <div class="place-meta">Monastiraki/Plaka · ~1 hr · included in Acropolis combo</div>
+        <div class="place-desc">The Tower of the Winds (Horologion) is an octagonal marble clocktower built ~50 BC — simultaneously a sundial, weather vane, and water clock. Arguably the world's oldest surviving meteorological station. Each face depicts a wind deity in relief.</div>
+        <div class="tags">
+          <span class="tag teal">Combo Ticket</span>
+          <span class="tag blue">Underrated</span>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="place-name">Panathenaic Stadium (Kallimarmaro)</div>
+        <div class="place-meta">Near Kolonaki · ~45–60 min · ~€10</div>
+        <div class="place-desc">The only stadium in the world built entirely of marble. Site of the first modern Olympic Games in 1896. You can run a lap on the same track.</div>
+        <div class="tip">⚡ Early morning light is best; marble is blinding at midday.</div>
+        <div class="tags">
+          <span class="tag purple">Historic</span>
+        </div>
+      </div>
+
+      <div class="category-label">Neighborhoods &amp; Squares</div>
+
+      <div class="place-card">
+        <div class="place-name">Monastiraki Square &amp; Flea Market</div>
+        <div class="place-meta">Central Athens · free</div>
+        <div class="place-desc">Athens' most chaotic and energetic crossroads. Ancient ruins, a Byzantine mosque, flea market stalls, street food, and legendary rooftop bars with Acropolis backdrop — all in one square. Flea market sprawls south on Ifestou Street.</div>
+        <div class="tip">⚡ A for Athens and 360 Cocktail Bar rooftop bars at sunset (8–9 PM) — Acropolis in golden hour light. Non-negotiable.</div>
+        <div class="tags">
+          <span class="tag green">Free</span>
+          <span class="tag gold">Sunset Essential</span>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="place-name">Plaka Neighborhood</div>
+        <div class="place-meta">Below the Acropolis · free · half-day+</div>
+        <div class="place-desc">Oldest inhabited neighborhood in Athens. Pedestrian-only labyrinth of neoclassical mansions, bougainvillea stairways, and tavernas. Touristy on the main streets — go one block off the obvious path and it becomes genuinely lovely.</div>
+        <div class="tags">
+          <span class="tag green">Free</span>
+          <span class="tag blue">Romantic</span>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="place-name">Syntagma Square — Changing of the Guard</div>
+        <div class="place-meta">City Center · free · 30 min</div>
+        <div class="place-desc">Evzones (Presidential Guard) in traditional uniform guard the Tomb of the Unknown Soldier 24/7. Guard changes every hour. The Sunday 11 AM ceremony includes a full marching band and the complete regiment.</div>
+        <div class="tip">⚡ The Sunday grand ceremony is worth arranging your schedule around — don't miss it if you're there on Jul 5.</div>
+        <div class="tags">
+          <span class="tag green">Free</span>
+          <span class="tag purple">Cultural</span>
+        </div>
+      </div>
+
+      <div class="category-label">Museums &amp; Culture</div>
+
+      <div class="place-card">
+        <div class="place-name">National Archaeological Museum</div>
+        <div class="place-meta">North of Syntagma · 2–3+ hrs · €20</div>
+        <div class="place-desc">The most important Greek antiquities collection in the world. Mask of Agamemnon, the Antikythera Mechanism (world's first analog computer, ~100 BC), the Artemision Bronze (Zeus or Poseidon), and the Thira frescoes from ancient Santorini.</div>
+        <div class="tip">⚡ Wildly underrated relative to the Acropolis. Less crowded, fully A/C, and the collection is extraordinary. A strong midday option.</div>
+        <div class="tags">
+          <span class="tag blue">Underrated</span>
+          <span class="tag green">A/C Refuge</span>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="place-name">Odeon of Herodes Atticus — Live Performance</div>
+        <div class="place-meta">South slope Acropolis · 2–3 hrs · €15–100+</div>
+        <div class="place-desc">Roman-era stone theater built 161 AD, still in use. Athens &amp; Epidaurus Festival (June–August) stages concerts, ballet, and theater here. Illuminated Parthenon behind the stage. 5,000 seats. One of those experiences that is almost too much.</div>
+        <div class="tip">⚡ Check greekfestival.gr now and book tickets — peak summer slots sell out. Affordable tickets exist (€15–30).</div>
+        <div class="tags">
+          <span class="tag gold">Book Ahead</span>
+          <span class="tag purple">Bucket List</span>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="place-name">Lycabettus Hill</div>
+        <div class="place-meta">Kolonaki · 1–1.5 hrs · free (walk) or €7 funicular</div>
+        <div class="place-desc">Highest point in Athens (277 m). Chapel of Saint George at the top. Panoramic views to the sea, the Acropolis, and on clear days, the island of Aegina.</div>
+        <div class="tip">⚡ Arrive 30–45 min before sunset — one of Athens' great golden-hour views.</div>
+        <div class="tags">
+          <span class="tag gold">Sunset</span>
+          <span class="tag green">Free Walk</span>
+        </div>
+      </div>
+
+    </section>
+  </div><!-- /tab-attractions -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: HIDDEN GEMS                                           -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div id="tab-hidden" class="tab-content">
+
+    <div class="hero" style="background-image:url('https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?w=1200&q=70')">
+      <div class="eyebrow">Local Secrets</div>
+      <h2>Hidden Gems</h2>
+      <div class="hero-sub">Off the beaten path in Athens &amp; beyond</div>
+    </div>
+
+    <section>
+      <div class="section-title">Off the Beaten Path</div>
+
+      <div class="category-label">Hidden Neighborhoods</div>
+
+      <div class="place-card photo">
+        <div class="pc-img" style="background-image:url('https://images.unsplash.com/photo-1533105079780-92b9be482077?w=600&q=65')">
+          <div class="pc-name">Anafiotika</div>
+        </div>
+        <div class="pc-body">
+        <div class="place-meta">Above Plaka · free</div>
+        <div class="place-desc">Whitewashed cubic houses, blue doors, bougainvillea — a Cycladic island village teleported onto the Acropolis hillside. Built in the 1800s by workers from the island of Anafi who constructed their homes in their homeland style. Two tiny rock churches embedded into the cliff. Most tourists walk right past the stairs.</div>
+        <div class="tip">⚡ Enter from upper Plaka lanes near Stratonos Street. Best in early morning or golden hour.</div>
+        <div class="tags">
+          <span class="tag blue">Hidden</span>
+          <span class="tag purple">Photogenic</span>
+          <span class="tag green">Free</span>
+        </div>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="place-name">Strefi Hill — The Local's Lycabettus</div>
+        <div class="place-meta">Exarchia · free · no tourists</div>
+        <div class="place-desc">A small pine-covered hill in Exarchia that most travelers skip. Excellent panoramic views — Lycabettus in the foreground, Acropolis beyond — from a completely local setting. Basketball court, stray cats, Athenian families on evening walks. No funicular, no ticket booth.</div>
+        <div class="tip">⚡ Enter from Kallidromiou Street in Exarchia. Best at golden hour. Exarchia has a famously independent character — fine in daylight.</div>
+        <div class="tags">
+          <span class="tag green">Free</span>
+          <span class="tag teal">Local Vibe</span>
+          <span class="tag gold">Sunset</span>
+        </div>
+      </div>
+
+      <div class="category-label">Ancient Sites (No Crowds)</div>
+
+      <div class="place-card">
+        <div class="place-name">The Pnyx — World's First Parliament</div>
+        <div class="place-meta">West of Acropolis · free</div>
+        <div class="place-desc">A rocky hillside where the Ekklesia (Assembly of Athenian citizens) met from 507 BC onward — the world's first democratic parliament. The Bema (speaker's platform) is a rock-cut podium from which Themistocles, Pericles, and Demosthenes addressed citizens. You can stand on the exact spot.</div>
+        <div class="tip">⚡ Almost no one visits. Zero crowds. Free entry. You can stand where democracy was literally invented. Also has one of the best angles on the Acropolis in the city.</div>
+        <div class="tags">
+          <span class="tag green">Free</span>
+          <span class="tag blue">No Crowds</span>
+          <span class="tag purple">Historic</span>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="place-name">Kerameikos Cemetery &amp; Museum</div>
+        <div class="place-meta">NW of Agora · included in Acropolis combo</div>
+        <div class="place-desc">Athens' most important ancient cemetery, 12th century BC onward. The Street of Tombs is a preserved ancient road lined with elaborate grave monuments (sculpted marble bulls, serpents, warriors). The Dipylon Gate — the largest ancient city gate in Greece. Cats live in the ruins.</div>
+        <div class="tip">⚡ Consistently one of the least-visited downtown sites. A tranquil, genuinely moving experience. Combine with Psirri neighborhood next door.</div>
+        <div class="tags">
+          <span class="tag teal">Combo Ticket</span>
+          <span class="tag blue">No Crowds</span>
+        </div>
+      </div>
+
+      <div class="category-label">Hidden Bars &amp; Distilleries</div>
+
+      <div class="place-card">
+        <div class="place-name">TAF — The Art Foundation</div>
+        <div class="place-meta">Normanou 5 · cocktail bar + gallery · 10 AM–3 AM</div>
+        <div class="place-desc">Hidden behind an inconspicuous door 30 seconds from the Ancient Agora. An 1870s neoclassical building with a tree-filled courtyard that becomes a cocktail bar. Rotating contemporary art exhibitions upstairs. Locals drinking excellent cocktails under string lights. Virtually no tourists despite central location.</div>
+        <div class="tip">⚡ Duck into the dark entrance at Normanou 5 — the courtyard opens beyond. You'd walk past it a dozen times without knowing.</div>
+        <div class="tags">
+          <span class="tag blue">Hidden</span>
+          <span class="tag teal">Local Vibe</span>
+          <span class="tag purple">Art</span>
+        </div>
+        <a class="map-btn" href="#">📍 Normanou 5, Monastiraki</a>
+      </div>
+
+      <div class="place-card">
+        <div class="place-name">Brettos Distillery</div>
+        <div class="place-meta">Kydathineon 41, Plaka · open afternoons/evenings</div>
+        <div class="place-desc">Family-run distillery operating since 1909. The interior is lined floor-to-ceiling with hundreds of illuminated colored glass bottles. They distill their own ouzo, tsipouro, rakomelo (warm raki with honey and cinnamon), brandy, and metaxa. Sample at the bar for a few euros per shot.</div>
+        <div class="tip">⚡ Bottles make excellent gifts — cheaper here than at the airport. The colored bottle wall alone is worth stepping inside.</div>
+        <div class="tags">
+          <span class="tag gold">Local Spirits</span>
+          <span class="tag purple">Atmospheric</span>
+        </div>
+      </div>
+
+      <div class="category-label">Museums Worth Knowing</div>
+
+      <div class="place-card">
+        <div class="place-name">Benaki Museum of Islamic Art</div>
+        <div class="place-meta">Agion Asomaton 22, Kerameikos · World-class, empty</div>
+        <div class="place-desc">One of the top ten Islamic art collections in the world — 8,000+ works across ceramics, metalwork, textiles, and armor from the 8th through 19th centuries. The crown exhibit: a fully intact 17th-century Cairo mansion reception room with original marble interior, transplanted here.</div>
+        <div class="tip">⚡ Almost nobody visits. A walk from Thisio Metro. Genuinely extraordinary and consistently uncrowded.</div>
+        <div class="tags">
+          <span class="tag blue">Underrated</span>
+          <span class="tag green">No Crowds</span>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="place-name">Numismatic Museum (Schliemann's Mansion)</div>
+        <div class="place-meta">Panepistimiou 12, near Syntagma · cheap</div>
+        <div class="place-desc">One of the world's most important coin collections — 500,000+ coins from 1400 BC to modern era. But the real draw is the building: the mansion of Heinrich Schliemann (the archaeologist who excavated Troy and Mycenae). Pompeian frescoes, floor mosaics of Trojan finds, Homer inscriptions on the walls.</div>
+        <div class="tip">⚡ Even if coins bore you, the interior of this mansion is stunning. Walk along the adjacent neoclassical "Athenian Trilogy" — University, National Library, Academy of Athens.</div>
+        <div class="tags">
+          <span class="tag blue">Underrated</span>
+          <span class="tag purple">Historic Building</span>
+        </div>
+      </div>
+
+      <div class="category-label">Day Trips &amp; Escapes</div>
+
+      <div class="place-card">
+        <div class="place-name">Vouliagmeni Lake</div>
+        <div class="place-meta">~20 km south · ~30–40 min taxi · ~€15 entry</div>
+        <div class="place-desc">A natural thermal lake where underground waters emerge into a brackish karst lake with overhanging stalactites. Water maintained at 22–29°C year-round, rich in minerals. Fish perform a natural exfoliating service. Used therapeutically since antiquity — Romans built baths here.</div>
+        <div class="tip">⚡ Perfect July escape from the city heat. Morning visit gets the best light through the stalactite formations.</div>
+        <div class="tags">
+          <span class="tag teal">Swimming</span>
+          <span class="tag gold">July Essential</span>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="place-name">Kaisariani Monastery</div>
+        <div class="place-meta">~5 km east · 20 min taxi · free/cheap entry</div>
+        <div class="place-desc">An 11th-century Byzantine monastery built into forested slopes of Mount Hymettus. Main church covered in 16th–17th century frescoes. Around it: monks' cells, bathhouse, olive press, millhouse — all standing. Marked hiking trails to hidden chapels above. A spring has flowed here since antiquity; the ancient Athenians sacrificed here to Aphrodite.</div>
+        <div class="tip">⚡ Cool, quiet, forested — a complete escape from city heat barely a taxi ride away. Athenians hike here on weekends; tourists skip it entirely.</div>
+        <div class="tags">
+          <span class="tag green">Escape</span>
+          <span class="tag teal">Hiking</span>
+          <span class="tag blue">No Crowds</span>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="place-name">Syntagma Metro Station — Archaeology Underground</div>
+        <div class="place-meta">Free — you're already here</div>
+        <div class="place-desc">During construction in the 1990s, workers excavated a significant section of the ancient city — finding thousands of artifacts including burial sites, a Roman bath, and an intact 4th-century BC skeleton. All displayed museum-style in glass cases throughout the station. The skeleton is visible from the platform.</div>
+        <div class="tip">⚡ You are waiting for your train next to an ancient Athenian. Free, on the way to everywhere. Just slow down and read the cases.</div>
+        <div class="tags">
+          <span class="tag green">Free</span>
+          <span class="tag blue">Hidden in Plain Sight</span>
+        </div>
+      </div>
+
+    </section>
+  </div><!-- /tab-hidden -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: PRACTICAL INFO                                        -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div id="tab-practical" class="tab-content">
+
+    <section>
+      <div class="section-title">Getting Around Athens</div>
+      <div class="alert blue">
+        <strong>Metro Lines</strong>
+        Line 2 (Red) → Acropolis station · Line 3 (Blue) → Airport, Syntagma, Monastiraki · Line 1 (Green) → Piraeus port. Tap Visa/Mastercard/Apple Pay directly at validators (no ticket needed for city fares). Single fare: <strong>€1.20</strong>. Daily cap: <strong>€4.10</strong>. Airport: <strong>€9</strong> one-way.
+      </div>
+      <div class="alert green">
+        <strong>Taxis &amp; Rideshare</strong>
+        Use <strong>FreeNow or Uber</strong> apps — eliminates meter scams entirely. Official yellow taxis: insist on the meter before entering. Airport flat rate: €40 (5 AM–midnight), €55 (midnight–5 AM) — fixed by law.
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Money &amp; ATMs</div>
+      <div class="alert gold">
+        <strong>ATM Warning</strong>
+        Use only bank ATMs: Alpha Bank, Piraeus Bank, Eurobank, National Bank of Greece. Avoid Euronet and private ATMs — excessive fees.
+      </div>
+      <div class="alert red">
+        <strong>Always Pay in Euros</strong>
+        When any ATM or card terminal offers to charge in USD, ALWAYS choose "pay in EUR (local currency)." Dynamic Currency Conversion is a ripoff — every time.
+      </div>
+      <div class="ref-grid" style="margin-top:10px">
+        <div class="ref-card">
+          <div class="label">Cash on Hand</div>
+          <div class="value">€150–200</div>
+        </div>
+        <div class="ref-card">
+          <div class="label">Cards</div>
+          <div class="value green">Widely accepted</div>
+        </div>
+        <div class="ref-card">
+          <div class="label">Tips (Restaurant)</div>
+          <div class="value">5–10% or round up</div>
+        </div>
+        <div class="ref-card">
+          <div class="label">Tips (Taxi)</div>
+          <div class="value">Round up, +€1–2</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">July Heat — Critical</div>
+      <div class="alert red">
+        <strong>Average High: 95–105°F (35–40°C)</strong>
+        Heatwaves can push above 42°C (108°F). The Acropolis may close automatically 1–5 PM when temps exceed 40°C. <strong>Book the 8 AM Acropolis slot</strong> — it's 5–10°C cooler and the crowds are a fraction of peak hours.
+      </div>
+      <div class="alert gold">
+        <strong>Daily Strategy</strong>
+        8 AM – 11 AM: outdoor sites · 11 AM – 4 PM: museums, cafes, A/C · 4–8 PM: outdoor again · 8 PM+: dinner, rooftops, evening walks. Athens locals dine at 9 PM or later.
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Scams to Know</div>
+      <div class="scam-item">
+        <div class="scam-icon">!</div>
+        <div>
+          <div class="scam-title">Taxi meter "broken"</div>
+          <div class="scam-desc">Driver claims no meter, quotes inflated fare. Use FreeNow/Uber instead. Airport flat rate is €40 — fixed by law.</div>
+        </div>
+      </div>
+      <div class="scam-item">
+        <div class="scam-icon">!</div>
+        <div>
+          <div class="scam-title">Fake bracelet "gift"</div>
+          <div class="scam-desc">Stranger wraps bracelet on your wrist, then demands payment. Decline immediately and keep walking.</div>
+        </div>
+      </div>
+      <div class="scam-item">
+        <div class="scam-icon">!</div>
+        <div>
+          <div class="scam-title">Restaurant bill inflation</div>
+          <div class="scam-desc">Always ask to see the menu with prices before ordering. Review the bill item by item near major tourist sites.</div>
+        </div>
+      </div>
+      <div class="scam-item">
+        <div class="scam-icon">!</div>
+        <div>
+          <div class="scam-title">Unordered table items</div>
+          <div class="scam-desc">Bread, olives, flowers placed without ordering — then charged. Ask if anything is complimentary before eating it.</div>
+        </div>
+      </div>
+      <div class="scam-item">
+        <div class="scam-icon">!</div>
+        <div>
+          <div class="scam-title">Bird dropping / yogurt scam</div>
+          <div class="scam-desc">Fake substance lands on you, "helpful" stranger offers to clean it and pickpockets you. Decline help and step into a shop.</div>
+        </div>
+      </div>
+      <div class="scam-item">
+        <div class="scam-icon">!</div>
+        <div>
+          <div class="scam-title">Euronet ATMs</div>
+          <div class="scam-desc">Private ATMs with excessive fees. Stick to Greek bank ATMs (Alpha Bank, Piraeus, Eurobank, National Bank).</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Dress Code at Religious Sites</div>
+      <div class="alert purple">
+        <strong>Churches &amp; Monasteries</strong>
+        Shoulders and knees must be covered (both men and women). Women may be asked to cover their head — carry a scarf. Remove hats before entering any church. A lightweight cotton scarf doubles as a sun cover and church wrap.
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Key Greek Phrases</div>
+      <div class="alert blue">
+        <strong>Head Nod Alert</strong>
+        Greek head nod up-and-back = "no" · down = "yes" — the opposite of what Americans expect. This will confuse you at least once.
+      </div>
+      <table class="phrase-table">
+        <tr><td>Hello (formal)</td><td>Γεια σας — YAH-sahs</td></tr>
+        <tr><td>Good morning</td><td>Καλημέρα — kah-lee-MEH-rah</td></tr>
+        <tr><td>Good evening</td><td>Καλησπέρα — kah-lee-SPEH-rah</td></tr>
+        <tr><td>Thank you</td><td>Ευχαριστώ — ef-hah-rees-TOH</td></tr>
+        <tr><td>Please / You're welcome</td><td>Παρακαλώ — pah-rah-kah-LOH</td></tr>
+        <tr><td>Excuse me / Sorry</td><td>Συγνώμη — seeg-NOH-mee</td></tr>
+        <tr><td>Yes / No</td><td>Ναι / Όχι — NEH / OH-hee</td></tr>
+        <tr><td>How much?</td><td>Πόσο κοστίζει; — POH-soh koh-STEE-zee</td></tr>
+        <tr><td>The bill, please</td><td>Τον λογαριασμό — ton loh-gah-rees-MOH</td></tr>
+        <tr><td>Cheers!</td><td>Υγεία! — ee-YEE-ah</td></tr>
+        <tr><td>Delicious!</td><td>Νόστιμο! — NOH-stee-moh</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <div class="section-title">Neighborhoods at a Glance</div>
+      <div class="place-card">
+        <div class="place-name">Plaka</div>
+        <div class="place-desc">Oldest neighborhood, pedestrian-only, charming, postcard-pretty, closest to all major sites. Touristy but unavoidable.</div>
+        <div class="tags"><span class="tag blue">Romantic</span><span class="tag gold">Tourist Central</span></div>
+      </div>
+      <div class="place-card">
+        <div class="place-name">Monastiraki</div>
+        <div class="place-desc">Energetic, chaotic, gritty, excellent rooftop bars with Acropolis views. Flea market. Young energy.</div>
+        <div class="tags"><span class="tag teal">Nightlife</span><span class="tag gold">Rooftop Bars</span></div>
+      </div>
+      <div class="place-card">
+        <div class="place-name">Koukaki</div>
+        <div class="place-desc">Residential, local-feeling, brunch culture. Close to Acropolis Museum. Good base for first-timers who want authenticity.</div>
+        <div class="tags"><span class="tag green">Local Vibe</span><span class="tag blue">Foodie</span></div>
+      </div>
+      <div class="place-card">
+        <div class="place-name">Psirri</div>
+        <div class="place-desc">Hip, street art, live music, creative scene, excellent cocktail bars. Best after 9 PM.</div>
+        <div class="tags"><span class="tag teal">Nightlife</span><span class="tag purple">Art</span></div>
+      </div>
+      <div class="place-card">
+        <div class="place-name">Kolonaki</div>
+        <div class="place-desc">Upscale, designer boutiques, sophisticated dining. Access point for Lycabettus Hill funicular.</div>
+        <div class="tags"><span class="tag gold">Fine Dining</span><span class="tag blue">Upscale</span></div>
+      </div>
+      <div class="place-card">
+        <div class="place-name">Exarchia</div>
+        <div class="place-desc">Anarchist-adjacent, edgy, authentic Athens. Street art, independent bars, Strefi Hill. Use awareness after dark.</div>
+        <div class="tags"><span class="tag red">Caution at Night</span><span class="tag teal">Authentic</span></div>
+      </div>
+    </section>
+
+  </div><!-- /tab-practical -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TAB: CONFERENCE                                             -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div id="tab-conference" class="tab-content">
+
+    <section>
+      <div class="section-title">International Aphasia Rehabilitation Conference</div>
+      <div class="alert blue">
+        <strong>Venue · July 1–3, 2026</strong>
+        Technopolis — Auditorium "Miltiadis Evert", Athens
+      </div>
+      <div class="conf-filter-group">
+        <div class="conf-filter-label">Day</div>
+        <div class="conf-filters">
+          <button class="cf-btn active" onclick="filterConf(this,'day','all')">All</button>
+          <button class="cf-btn" onclick="filterConf(this,'day','1')">Wed Jul 1</button>
+          <button class="cf-btn" onclick="filterConf(this,'day','2')">Thu Jul 2</button>
+          <button class="cf-btn" onclick="filterConf(this,'day','3')">Fri Jul 3</button>
+        </div>
+      </div>
+      <div class="conf-filter-group">
+        <div class="conf-filter-label">Type</div>
+        <div class="conf-filters">
+          <button class="cf-btn active" onclick="filterConf(this,'type','all')">All</button>
+          <button class="cf-btn" onclick="filterConf(this,'type','keynote')">Keynote</button>
+          <button class="cf-btn" onclick="filterConf(this,'type','platform')">Platform</button>
+          <button class="cf-btn" onclick="filterConf(this,'type','panel')">Panel</button>
+        </div>
+      </div>
+    </section>
+
+    <div id="conf-list">
+
+      <!-- ══ Wednesday, July 1 ══ -->
+      <div class="conf-day-header" data-day="1">Wednesday · July 1</div>
+
+      <div class="conf-block" data-day="1" data-type="break">
+        <div class="timeline-item">
+          <div class="timeline-time">7:30</div>
+          <div class="timeline-content"><div class="title">Registration</div></div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="1" data-type="break">
+        <div class="timeline-item">
+          <div class="timeline-time">8:00</div>
+          <div class="timeline-content"><div class="title">Welcome</div></div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="1" data-type="keynote">
+        <div class="timeline-item key">
+          <div class="timeline-time">8:30</div>
+          <div class="timeline-content">
+            <div class="title">Digital Dysphasia: Simulating Aphasic Speech with Large Language Models</div>
+            <div class="sub">George Mikros &nbsp;·&nbsp; <span class="cf-inline-tag blue">Keynote</span></div>
+            <div class="sub" style="margin-top:4px">Opportunities and Challenges for Rehabilitation and Research</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="1" data-type="platform">
+        <div class="timeline-item">
+          <div class="timeline-time">9:30</div>
+          <div class="timeline-content">
+            <div class="title">From Concept to Clinical Practice: AI Tools Empowering People with Aphasia</div>
+            <div class="sub"><span class="cf-inline-tag teal">Platform</span></div>
+            <button class="cf-toggle" onclick="togglePresentations(this)">Show presentations ▾</button>
+            <div class="cf-pres" style="display:none">
+              <div class="cf-pres-item"><span class="cf-op">OP01</span> Lessons Learnt in using LLMs to facilitate Aphasia Therapy from a Community of Practice — <em>Emily Guo</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP02</span> Using generative AI to support language in aphasia: Potential and problems to solve — <em>John Pierce</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP03</span> From proof-of-concept to multisite implementation: Lessons from adapting the CHAT strategy — <em>Kirstine Shrubsole</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP04</span> Aphasia and Alexa: Moving beyond 'Sorry, I Don't Understand' through Collaboration — <em>Abi Roper</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="1" data-type="break">
+        <div class="timeline-item">
+          <div class="timeline-time">10:30</div>
+          <div class="timeline-content"><div class="title">Coffee Break</div></div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="1" data-type="platform">
+        <div class="timeline-item">
+          <div class="timeline-time">11:00</div>
+          <div class="timeline-content">
+            <div class="title">Data-Informed Advances in Neurogenic Communication Disorders</div>
+            <div class="sub"><span class="cf-inline-tag teal">Platform</span> &nbsp;Assessment, Prediction, and Innovative Interventions</div>
+            <button class="cf-toggle" onclick="togglePresentations(this)">Show presentations ▾</button>
+            <div class="cf-pres" style="display:none">
+              <div class="cf-pres-item"><span class="cf-op">OP05</span> Addressing long-term post-discharge needs via AI-enabled self-management (Communication Connect) — <em>Miranda Rose</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP06</span> Cognitive function predicts intensive aphasia therapy outcomes: FCET2EC RCT — <em>Caterina Breitenstein</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP07</span> Feasibility and Efficacy of a Hybrid Delivery Model for TBI (Categorization Program) — <em>Fofi Constantinidou</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP08</span> Investigating "Aphasia + Math" online intervention for acalculia in adults with aphasia — <em>Caroline Newton</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP09</span> TELE-narraktiv: Biographical-narrative Intervention to support quality of life — <em>Sabine Corsten</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP10</span> Formal language assessment after right hemisphere stroke: systematic review and recommendations — <em>Alexandra Durfee</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="1" data-type="break">
+        <div class="timeline-item food">
+          <div class="timeline-time">12:30</div>
+          <div class="timeline-content">
+            <div class="title">Lunch &amp; Poster Session 1</div>
+            <div class="sub">Until 14:00</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="1" data-type="keynote">
+        <div class="timeline-item key">
+          <div class="timeline-time">14:00</div>
+          <div class="timeline-content">
+            <div class="title">Digital Innovation in the Management of Conversational Discourse Following Acquired Brain Injury</div>
+            <div class="sub">Leanne Togher &nbsp;·&nbsp; <span class="cf-inline-tag blue">Keynote</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="1" data-type="platform">
+        <div class="timeline-item">
+          <div class="timeline-time">15:00</div>
+          <div class="timeline-content">
+            <div class="title">Digital Tools, Apps, and Accessible Technologies in Aphasia Assessment and Therapy</div>
+            <div class="sub"><span class="cf-inline-tag teal">Platform</span></div>
+            <button class="cf-toggle" onclick="togglePresentations(this)">Show presentations ▾</button>
+            <div class="cf-pres" style="display:none">
+              <div class="cf-pres-item"><span class="cf-op">OP11</span> Building a Greek Computer-Adaptive Anomia Test: Psychometric and Corpus Foundations (CACLA) — <em>Evangelia Antonia Efstratiadou</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP12</span> Online Toolkit and Training for Telehealth Aphasia Assessment: Findings from FATE-A — <em>Amanda Comer</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP13</span> OptimA: Mapping the Aphasia Therapy App Landscape and SLT Decision-Making — <em>Vasiliki Kladouchou</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP14</span> Making audio visual media accessible for people with aphasia (CA11y project) — <em>Madeline Cruice</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP15</span> "Much better than I thought it would be": experiences of online aphasia assessment — <em>Ciara Shiggins</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="1" data-type="break">
+        <div class="timeline-item">
+          <div class="timeline-time">16:15</div>
+          <div class="timeline-content"><div class="title">Coffee Break</div></div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="1" data-type="panel">
+        <div class="timeline-item note">
+          <div class="timeline-time">16:45</div>
+          <div class="timeline-content">
+            <div class="title">Innovations in Digital Aphasia Care: Apps for Discourse Analysis and Virtual Treatment</div>
+            <div class="sub"><span class="cf-inline-tag purple">Panel</span></div>
+            <button class="cf-toggle" onclick="togglePresentations(this)">Show presentations ▾</button>
+            <div class="cf-pres" style="display:none">
+              <div class="cf-pres-item"><span class="cf-op">OP16</span> Exploring the efficiency and accuracy of the MARS app for analysing personal spoken stories — <em>Ruth O'Hagan</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP17</span> An innovative approach to discourse analysis: can we develop an app to support clinicians? — <em>Ruth O'Hagan</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP18</span> A feasibility RCT of Virtual Elaborated Semantic Feature Analysis (VESFA) — <em>Niamh Devane</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="1" data-type="break">
+        <div class="timeline-item">
+          <div class="timeline-time">17:45</div>
+          <div class="timeline-content"><div class="title">Discussion</div></div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="1" data-type="break">
+        <div class="timeline-item food">
+          <div class="timeline-time">18:00</div>
+          <div class="timeline-content">
+            <div class="title">Welcome Reception</div>
+            <div class="sub">Until 20:00</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ Thursday, July 2 ══ -->
+      <div class="conf-day-header" data-day="2">Thursday · July 2</div>
+
+      <div class="conf-block" data-day="2" data-type="break">
+        <div class="timeline-item">
+          <div class="timeline-time">8:00</div>
+          <div class="timeline-content"><div class="title">Registration</div></div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="2" data-type="platform">
+        <div class="timeline-item">
+          <div class="timeline-time">8:30</div>
+          <div class="timeline-content">
+            <div class="title">Advances in Aphasia Assessment: Tools, Psychometrics, Telehealth, and Clinical Implementation</div>
+            <div class="sub"><span class="cf-inline-tag teal">Platform</span></div>
+            <button class="cf-toggle" onclick="togglePresentations(this)">Show presentations ▾</button>
+            <div class="cf-pres" style="display:none">
+              <div class="cf-pres-item"><span class="cf-op">OP19</span> Development and validation of the Cyprus Aphasia Screening Test (CAST) — <em>Marina Charalambous</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP20</span> LexiGram: Standardized Test for Lexical and Grammatical Deficits in Greek-Speaking Individuals — <em>Spyridoula Varlokosta &amp; Evangelia Antonia Efstratiadou</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP21</span> Bridging Research and Practice: Clinical Application of Transcription-Less Discourse Assessments — <em>Reem Alyahya</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP22</span> Standardised to dynamic: how assessment interactions reveal therapeutic potential — <em>Deborah Hersh</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP23</span> Validity and feasibility of a telepractice screening protocol to identify aphasia post stroke — <em>Selina Teti</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP24</span> Telehealth assessments in aphasia: equivalence with face-to-face and reliability (FATE-A) — <em>Katerina Hilari</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP25</span> Why Clinicians Value PROMs but Struggle to Implement Them — <em>Sally Zingelman</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP26</span> Co-Designing an online implementation toolkit for post-stroke aphasia management — <em>Kirstine Shrubsole</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="2" data-type="break">
+        <div class="timeline-item">
+          <div class="timeline-time">10:30</div>
+          <div class="timeline-content"><div class="title">Coffee Break</div></div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="2" data-type="keynote">
+        <div class="timeline-item key">
+          <div class="timeline-time">11:00</div>
+          <div class="timeline-content">
+            <div class="title">On the Precipice of Change: Counseling and Psychological Care for Individuals with Aphasia</div>
+            <div class="sub">Jerry Hoepner &nbsp;·&nbsp; <span class="cf-inline-tag blue">Keynote</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="2" data-type="platform">
+        <div class="timeline-item">
+          <div class="timeline-time">12:00</div>
+          <div class="timeline-content">
+            <div class="title">Optimizing Aphasia Rehabilitation: Neurotherapeutic Approaches, Treatment Dose, and Learning Mechanisms</div>
+            <div class="sub"><span class="cf-inline-tag teal">Platform</span></div>
+            <button class="cf-toggle" onclick="togglePresentations(this)">Show presentations ▾</button>
+            <div class="cf-pres" style="display:none">
+              <div class="cf-pres-item"><span class="cf-op">OP27</span> One neurotherapeutic system for various language dysfunctions: individualised connectomic tACS — <em>Chester Cheung</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP28</span> Optimizing Language Rehabilitation by Matching Treatment Targets to Learning Mechanisms — <em>Amy Ramage</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP29</span> Dose, Generalization, and Script Training for Aphasia: A Randomized Clinical Trial — <em>Leora Cherney</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="2" data-type="break">
+        <div class="timeline-item food">
+          <div class="timeline-time">12:45</div>
+          <div class="timeline-content">
+            <div class="title">Lunch &amp; Poster Session 2</div>
+            <div class="sub">Until 14:15</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="2" data-type="keynote">
+        <div class="timeline-item key">
+          <div class="timeline-time">14:15</div>
+          <div class="timeline-content">
+            <div class="title">Behavioral Treatment of Aphasia: Dose, Active Ingredients, and Moderators of Treatment Response</div>
+            <div class="sub">William Hula &nbsp;·&nbsp; <span class="cf-inline-tag blue">Keynote</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="2" data-type="panel">
+        <div class="timeline-item note">
+          <div class="timeline-time">15:15</div>
+          <div class="timeline-content">
+            <div class="title">ICAP World: A Collaborative Vision for Global ICAP Research and Practice</div>
+            <div class="sub"><span class="cf-inline-tag purple">Panel</span></div>
+            <button class="cf-toggle" onclick="togglePresentations(this)">Show presentations ▾</button>
+            <div class="cf-pres" style="display:none">
+              <div class="cf-pres-item">What is an ICAP, Really? How ICAPs Operationalize Intensity, Comprehensiveness, and Cohort Design — <em>Jenna Griffin-Musick</em></div>
+              <div class="cf-pres-item">What Do ICAPs Look Like Around the World? International Perspectives on Implementation — <em>Ant Kong &amp; David Copland</em></div>
+              <div class="cf-pres-item">How Might ICAPs Work...or Not? A Provisional Theory of Change and Logic Model — <em>Katie Monnelly</em></div>
+              <div class="cf-pres-item">Where Do We Go From Here? Strategies for Multi-Site Collaboration and Aggregated Analysis — <em>Victoria Scharp &amp; Catherine Off</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="2" data-type="break">
+        <div class="timeline-item">
+          <div class="timeline-time">16:15</div>
+          <div class="timeline-content"><div class="title">Discussion</div></div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="2" data-type="break">
+        <div class="timeline-item">
+          <div class="timeline-time">16:30</div>
+          <div class="timeline-content"><div class="title">Coffee Break</div></div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="2" data-type="platform">
+        <div class="timeline-item">
+          <div class="timeline-time">17:00</div>
+          <div class="timeline-content">
+            <div class="title">Beyond ICAP: Implementing Intensive, Technology-Supported, and Person-Centred Aphasia Rehabilitation</div>
+            <div class="sub"><span class="cf-inline-tag teal">Platform</span></div>
+            <button class="cf-toggle" onclick="togglePresentations(this)">Show presentations ▾</button>
+            <div class="cf-pres" style="display:none">
+              <div class="cf-pres-item"><span class="cf-op">OP31</span> Communication partner training for brain injury using behaviour change and co-design — <em>Nicholas Behn</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP32</span> Feasibility of a supported self-management intervention for stroke survivors with aphasia (StarStep) — <em>Faye Wray</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP33</span> Feasibility of implementing TeleCHAT within clinical rehabilitation services — <em>Jade Dignam</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP34</span> Comparing effectiveness of ICAP for Cantonese speakers: In-person vs Virtual — <em>Wan Yin Wong</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP35</span> Can a modified ICAP (mICAP) be integrated into regular Swedish healthcare? — <em>Marika Schütz</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP36</span> Is High-Intensity Aphasia Telerehabilitation (HIPSTER) Superior to Usual Care? RCT — <em>Caterina Breitenstein</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ Friday, July 3 ══ -->
+      <div class="conf-day-header" data-day="3">Friday · July 3</div>
+
+      <div class="conf-block" data-day="3" data-type="break">
+        <div class="timeline-item">
+          <div class="timeline-time">8:00</div>
+          <div class="timeline-content"><div class="title">Registration</div></div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="3" data-type="platform">
+        <div class="timeline-item">
+          <div class="timeline-time">8:30</div>
+          <div class="timeline-content">
+            <div class="title">Community, Conversation, and Connectedness: Psychosocial Approaches to Aphasia Support</div>
+            <div class="sub"><span class="cf-inline-tag teal">Platform</span></div>
+            <button class="cf-toggle" onclick="togglePresentations(this)">Show presentations ▾</button>
+            <div class="cf-pres" style="display:none">
+              <div class="cf-pres-item"><span class="cf-op">OP37</span> Rebalancing Evidence-Based Aphasia Neurorehabilitation: A P-FACTOR Perspective — <em>Gloriajean Wallace</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP38</span> Communication, Identity and Culture: Adaptation of Better Conversations for Latin America — <em>Claudia Olivares</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP39</span> Bridging workforce gaps: Hub-and-Spoke, Peer-led Community Aphasia Group model — <em>Lucette E. Lanyon</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP40</span> Staff and volunteer experiences of Hub-and-Spoke Peer-Led Community Aphasia Group — <em>Kathryn Pettigrove</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP41</span> Connecting Couples Impacted by Aphasia: Relationship-Centered Communication Partner Training — <em>Tyson Harmon</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP42</span> Managing Conversations about Personal Troubles: Facilitator Role in Online Aphasia Group Therapy — <em>Bianca Von Der Heide</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP43</span> The differing effects of conversation group treatment for chronic aphasia — <em>Gayle Dede</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP44</span> Creative Expression as a Tool for Communicative Success in Persons with Aphasia — <em>Mareike Hartmann</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="3" data-type="break">
+        <div class="timeline-item">
+          <div class="timeline-time">10:30</div>
+          <div class="timeline-content"><div class="title">Coffee Break</div></div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="3" data-type="keynote">
+        <div class="timeline-item key">
+          <div class="timeline-time">11:00</div>
+          <div class="timeline-content">
+            <div class="title">Advancing Aphasia Intervention: Current Insights, Future Vision</div>
+            <div class="sub">Katerina Hilari &nbsp;·&nbsp; <span class="cf-inline-tag blue">Keynote</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="3" data-type="platform">
+        <div class="timeline-item">
+          <div class="timeline-time">12:00</div>
+          <div class="timeline-content">
+            <div class="title">Co-Design, Culture, and Community Participation: Expanding Aphasia Rehabilitation Beyond the Clinic</div>
+            <div class="sub"><span class="cf-inline-tag teal">Platform</span></div>
+            <button class="cf-toggle" onclick="togglePresentations(this)">Show presentations ▾</button>
+            <div class="cf-pres" style="display:none">
+              <div class="cf-pres-item"><span class="cf-op">OP45</span> Reframing museums and art galleries as places for aphasia rehabilitation and life participation — <em>Jayne Lindsay</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP46</span> Co-Designing Solutions for Cross-Linguistic and Cross-Cultural Aphasia Therapy — <em>Chelsea Larkman</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP47</span> Bridging Global Gaps in Community Aphasia Management through Codesign and Cultural Adaptation — <em>Shu En Lee</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="3" data-type="break">
+        <div class="timeline-item food">
+          <div class="timeline-time">12:45</div>
+          <div class="timeline-content">
+            <div class="title">Lunch</div>
+            <div class="sub">Until 13:45</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="3" data-type="platform">
+        <div class="timeline-item">
+          <div class="timeline-time">13:45</div>
+          <div class="timeline-content">
+            <div class="title">Enhancing Communication in Neurodegenerative Aphasia: Teletherapy, PPA Adaptations, and Partner Training</div>
+            <div class="sub"><span class="cf-inline-tag teal">Platform</span></div>
+            <button class="cf-toggle" onclick="togglePresentations(this)">Show presentations ▾</button>
+            <div class="cf-pres" style="display:none">
+              <div class="cf-pres-item"><span class="cf-op">OP48</span> Better Conversations with primary progressive aphasia &amp; rare dementias: RCT — <em>Anna Volkmer</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP49</span> Co-development of an international Primary Progressive Aphasia awareness campaign — <em>Anna Volkmer</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP50</span> Better Conversations with PPA: translation and cultural adaptation to Norwegian — <em>Ingvild Winsnes</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP51</span> Teletherapy communication partner training for Alzheimer's with prominent language difficulties — <em>Richard Talbot</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="3" data-type="platform">
+        <div class="timeline-item">
+          <div class="timeline-time">14:45</div>
+          <div class="timeline-content">
+            <div class="title">Communication Access and Decision-Making Rights in Aphasia: Clinical, Ethical, and Societal Perspectives</div>
+            <div class="sub"><span class="cf-inline-tag teal">Platform</span></div>
+            <button class="cf-toggle" onclick="togglePresentations(this)">Show presentations ▾</button>
+            <div class="cf-pres" style="display:none">
+              <div class="cf-pres-item"><span class="cf-op">OP52</span> Evidence-Based Clinical Practice Guidelines for Communication at End-of-Life Decision-Making — <em>Alexandra Stipinovich</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP53</span> The SLT's Role in Supporting Decision-Making for People with Aphasia: International Survey — <em>Anna Volkmer</em></div>
+              <div class="cf-pres-item"><span class="cf-op">OP54</span> Access to the court system for people with aphasia — <em>Sue Sherratt</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="3" data-type="break">
+        <div class="timeline-item">
+          <div class="timeline-time">15:30</div>
+          <div class="timeline-content"><div class="title">Closing Remarks</div></div>
+        </div>
+      </div>
+
+      <div class="conf-block" data-day="3" data-type="break">
+        <div class="timeline-item transit">
+          <div class="timeline-time">16:30</div>
+          <div class="timeline-content">
+            <div class="title">Depart for Social Event</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /conf-list -->
+  </div><!-- /tab-conference -->
+
+
+  <!-- ═══ BOTTOM NAV ═══ -->
+  <nav class="bottom-nav">
+    <button onclick="showTab('overview')" class="active">
+      <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+      Overview
+    </button>
+    <button onclick="showTab('day2')">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      Itinerary
+    </button>
+    <button onclick="showTab('attractions')">
+      <svg viewBox="0 0 24 24"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Sights
+    </button>
+    <button onclick="showTab('hidden')">
+      <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9 16 14 18 22 12 17 6 22 8 14 2 9 9 9"/></svg>
+      Hidden
+    </button>
+    <button onclick="showTab('practical')">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9a3 3 0 115 2.2c-.8.6-2 1.3-2 2.8"/><path d="M12 17h.01"/></svg>
+      Info
+    </button>
+  </nav>
+
+  <!-- ═══ JAVASCRIPT ═══ -->
+  <script>
+    function showTab(name) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn, .bottom-nav button').forEach(el => el.classList.remove('active'));
+      var tab = document.getElementById('tab-' + name);
+      if (tab) tab.classList.add('active');
+      document.querySelectorAll('.tab-btn, .bottom-nav button').forEach(function(b) {
+        var oc = b.getAttribute('onclick') || '';
+        if (oc.indexOf("'" + name + "'") !== -1) b.classList.add('active');
+      });
+      window.scrollTo(0, 0);
+    }
+
+    /* ─── Countdown to departure (Jun 27 2026, 3:30 PM ET) ─── */
+    (function () {
+      var target = new Date('2026-06-27T15:30:00-04:00').getTime();
+      var elD = document.getElementById('cd-days'),
+          elH = document.getElementById('cd-hrs'),
+          elM = document.getElementById('cd-min'),
+          elS = document.getElementById('cd-sec'),
+          box = document.getElementById('countdown');
+      function pad(n) { return n < 10 ? '0' + n : '' + n; }
+      function tick() {
+        var diff = target - Date.now();
+        if (diff <= 0) {
+          box.classList.add('done');
+          elD.textContent = elH.textContent = elM.textContent = elS.textContent = '0';
+          box.querySelectorAll('.cd-label')[0].textContent = 'Καλό ταξίδι!';
+          return;
+        }
+        var s = Math.floor(diff / 1000);
+        elD.textContent = Math.floor(s / 86400);
+        elH.textContent = pad(Math.floor((s % 86400) / 3600));
+        elM.textContent = pad(Math.floor((s % 3600) / 60));
+        elS.textContent = pad(s % 60);
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+
+    /* ─── PWA install prompt ─── */
+    (function () {
+      var deferred = null;
+      var hint = document.getElementById('installHint');
+      var btn = document.getElementById('installBtn');
+      var close = document.getElementById('installClose');
+      window.addEventListener('beforeinstallprompt', function (e) {
+        e.preventDefault();
+        deferred = e;
+        if (!localStorage.getItem('installDismissed')) hint.classList.add('show');
+      });
+      btn.addEventListener('click', function () {
+        if (!deferred) return;
+        deferred.prompt();
+        deferred.userChoice.finally(function () { deferred = null; hint.classList.remove('show'); });
+      });
+      close.addEventListener('click', function () {
+        hint.classList.remove('show');
+        localStorage.setItem('installDismissed', '1');
+      });
+      window.addEventListener('appinstalled', function () { hint.classList.remove('show'); });
+    })();
+
+    /* ─── Service worker registration ─── */
+    if ('serviceWorker' in navigator && location.protocol === 'https:') {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js').catch(function (err) {
+          console.warn('SW registration failed', err);
+        });
+      });
+    }
+
+    var confFilters = { day: 'all', type: 'all' };
+
+    function filterConf(btn, filterKey, value) {
+      confFilters[filterKey] = value;
+      btn.closest('.conf-filters').querySelectorAll('.cf-btn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var blocks = document.querySelectorAll('.conf-block');
+      var headers = document.querySelectorAll('.conf-day-header');
+      blocks.forEach(function(block) {
+        var dayMatch = confFilters.day === 'all' || block.dataset.day === confFilters.day;
+        var typeMatch = confFilters.type === 'all' || block.dataset.type === confFilters.type;
+        block.style.display = (dayMatch && typeMatch) ? '' : 'none';
+      });
+      headers.forEach(function(h) {
+        var dayMatch = confFilters.day === 'all' || h.dataset.day === confFilters.day;
+        h.style.display = dayMatch ? '' : 'none';
+      });
+    }
+
+    function togglePresentations(btn) {
+      var list = btn.nextElementSibling;
+      var hidden = list.style.display === 'none' || list.style.display === '';
+      list.style.display = hidden ? 'block' : 'none';
+      btn.textContent = hidden ? 'Hide ▴' : 'Show presentations ▾';
+    }
+  </script>
+
+</body>
+</html>

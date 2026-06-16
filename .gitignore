@@ -1,0 +1,14 @@
+# Private / unredacted copies — never publish
+*.private.html
+
+# Source data not meant for the public site
+International APHASIA Rehabilitation Conference Program
+athens_trip_2026.kml
+
+# OS / tooling
+.DS_Store
+.claude/
+.playwright-mcp/
+__pycache__/
+.venv/
+.cache/
