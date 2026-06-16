@@ -167,6 +167,23 @@
     .fieldtable th { color: var(--gold); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
     .fieldtable td:first-child { color: #fff; font-weight: 600; white-space: nowrap; }
 
+    /* ─── Callout box ─── */
+    .callout {
+      background: linear-gradient(180deg, var(--surface2), var(--surface));
+      border: 1px solid var(--border); border-left: 3px solid var(--gold);
+      border-radius: 14px; padding: 18px 20px; margin: 28px 0;
+    }
+    .callout h4 {
+      font-family: "Inter", sans-serif; font-weight: 700; font-size: 12px;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .callout ol, .callout ul { margin: 0; padding-left: 20px; }
+    .callout li { margin: 7px 0; color: #cdd8e4; font-size: 15.5px; }
+    .callout li b { color: #fff; font-weight: 600; }
+    .callout.heat { border-left-color: var(--red); }
+    .callout.heat h4 { color: var(--red); }
+
     .endmark {
       text-align: center; color: var(--gold); font-size: 22px; margin: 50px 0 10px;
       font-family: "Playfair Display", serif;
@@ -206,6 +223,19 @@
       sites and walks from 8 to 11 in the morning; air-conditioned museums, shaded courtyards, and
       a siesta from noon to five; then the city truly wakes as the sun drops, with dinner rarely
       starting before nine. Plan your days this way and Athens feels effortless instead of exhausting.</p>
+
+    <div class="callout heat">
+      <h4>⚠ The heat is not a metaphor — plan around it</h4>
+      <ul>
+        <li>During the worst heatwaves the Culture Ministry now <b>closes the Acropolis and other
+          sites from roughly 12:00–17:00</b> outright (it happened in both June 2024 and July 2025).
+          A morning slot isn't just nicer — it's insurance against a wasted afternoon ticket.</li>
+        <li><b>Carry water and refill often.</b> Athens tap water is potable; the open sites have
+          almost no shade. A hat, real sunscreen, and the early start do most of the work.</li>
+        <li>Check for <b>heat advisories</b> (and, in a dry summer, wildfire smoke from outside the
+          city) before committing to a fixed-time outdoor booking like a Sounion sunset.</li>
+      </ul>
+    </div>
 
     <!-- ════════ NEIGHBORHOODS ════════ -->
     <h2 class="section"><span class="num">Part One · The Neighborhoods</span>A Tale of Two Quarters</h2>
@@ -254,6 +284,22 @@
     <blockquote>"The chefs recreated the briny flavor of sea urchins entirely from plants — a
       protest, on a plate, against illegal over-harvesting."</blockquote>
 
+    <div class="callout">
+      <h4>★ The four bookings to lock now</h4>
+      <p style="margin:0 0 10px;color:var(--muted);font-size:14.5px;">The marquee tables fill weeks
+        out and most take reservations by their own site, phone, or Instagram DM — not OpenTable.
+        Reserve these before the trip; everything else below is happily walk-in or same-week.</p>
+      <ol>
+        <li><b>Delta</b> — the milestone night; <b>€240 pp</b>, books weeks ahead (via Tock).</li>
+        <li><b>Soil</b> — the one-star garden tasting; small room, reserve early.</li>
+        <li><b>Aleria</b> — the romantic courtyard; dinner only, Tue–Sat.</li>
+        <li><b>Orizontes</b> — for a sunset table, ask for ~1 hr before sundown.</li>
+      </ol>
+      <p style="margin:10px 0 0;color:var(--muted);font-size:13.5px;">Cards are accepted almost
+        everywhere; tipping is light — round up, or ~5–10% for table service. Lunch and dinner are
+        often separate seatings, so confirm the service you want.</p>
+    </div>
+
     <span class="tier-tag">Tier I · Haute cuisine &amp; date nights</span>
 
     <div class="rest">
@@ -278,11 +324,13 @@
 
     <div class="rest">
       <h4>Aleria <span class="where">Metaxourgeio</span></h4>
-      <p>A masterclass in elegant contrasts — two FNL stars inside a meticulously restored
-        mid-19th-century villa with a secluded courtyard patio that erases the city around it. Chef
-        Gikas Xenakis cooks refined contemporary Greek: handmade pastas, local legumes, slow-cooked
-        meats. Lived-in romance.</p>
-      <p class="practical"><b>Tasting menus</b> · the most quietly romantic room on this list.</p>
+      <p>A masterclass in elegant contrasts (Michelin Plate) inside a meticulously restored 1895
+        villa with a secluded courtyard patio that erases the city around it. Chef Gikas Xenakis
+        cooks refined, produce-led contemporary Greek across two short tasting menus —
+        <em>"earth &amp; sea"</em> or the vegetable-forward <em>"garden &amp; nature,"</em> five or
+        six dishes each. Lived-in romance.</p>
+      <p class="practical"><b>Dinner only, Tue–Sat</b> (closed Sun/Mon) · the most quietly romantic
+        room on this list · book ahead.</p>
     </div>
 
     <div class="rest">
@@ -347,6 +395,14 @@
     <p class="note">Closest to home, <em>Dexameni</em> in its namesake square is the ideal spot for
       a casual lunch of ouzo and <em>mezedes</em> under the elm trees — steps from the lodging.</p>
 
+    <h3 class="sub">After dark, look up</h3>
+    <p>In summer the real move is a <em>rooftop</em>. As the heat finally breaks, the city's best bars
+      climb skyward for a cocktail with a floodlit Acropolis filling the horizon — the
+      <em>A for Athens</em> and <em>360 Cocktail Bar</em> rooftops over Monastiraki Square are the
+      classic head-on views, while the bar at the <em>Hotel Grande Bretagne</em> on Syntagma is the
+      dressier, old-world version. Arrive around sunset for the light; expect a wait or a reservation
+      at the famous ones. These are mapped in the <em>Bars &amp; Rooftops</em> layer of your map.</p>
+
     <!-- ════════ CULTURE CIRCUITS ════════ -->
     <h2 class="section"><span class="num">Part Three · Together</span>Culture Without the Climb</h2>
     <p>The shared days favor visually rich, easily walked neighborhoods and world-class institutions
@@ -365,6 +421,26 @@
       Dancer Aged Fourteen</em>. A quiet, civilized counterpoint to the ancient ruins, with a lush
       garden café for a Mediterranean lunch afterward.</p>
 
+    <h3 class="sub">The Museum of Cycladic Art</h3>
+    <p>The closest world-class museum to your door — a few blocks down the Kolonaki slope. Its serene
+      galleries hold the slim, abstract marble figurines of the 5,000-year-old Cycladic civilization,
+      the ones whose clean geometry directly inspired Picasso, Modigliani, and Brâncuși. Small,
+      cool, and never overwhelming: the ideal 90-minute escape when the midday sun has shut the open
+      sites. A glass atrium café makes a calm coffee stop afterward.</p>
+
+    <h3 class="sub">The Byzantine &amp; Christian Museum</h3>
+    <p>On Vasilissis Sofias, an easy walk from Evangelismos (your metro stop), set in the gardens of
+      a 19th-century villa. It fills the thousand-year chapter the Acropolis skips entirely — gold
+      icons, mosaics, and frescoes from the Byzantine empire — in shaded, unhurried halls. Pair it
+      with the neighboring <em>War Museum</em> or <em>National Gallery</em> if the day stays hot.</p>
+
+    <h3 class="sub">The Benaki — two houses</h3>
+    <p>The <em>Benaki Museum of Greek Culture</em> (Kolonaki) sweeps from antiquity to the War of
+      Independence in one elegant mansion, with a rooftop café over the National Garden. Its sibling,
+      the <em>Benaki Museum of Islamic Art</em> near Kerameikos, is a quiet gem — a superb collection
+      in a restored neoclassical house whose top-floor terrace frames an unexpected view of the
+      Acropolis. Two very different moods under one institution.</p>
+
     <h3 class="sub">Plaka &amp; Anafiotika</h3>
     <p>Wander one block off Plaka's commercial arteries and you find preserved Byzantine churches and
       neoclassical mansions. Tucked directly beneath the Acropolis rock is <em>Anafiotika</em>, built
@@ -372,14 +448,90 @@
       bougainvillea-draped, stair-stepped alleys that look exactly like a Cycladic island dropped into
       the middle of the metropolis.</p>
 
+    <h3 class="sub">The National Garden &amp; the Marble Stadium</h3>
+    <p>When the heat peaks, the <em>National Garden</em> behind Parliament is the center's deepest
+      shade — 15 hectares of dense canopy, duck ponds, and the neoclassical <em>Zappeion</em> hall,
+      a cool green corridor you can walk from Syntagma without ever crossing open pavement. It spills
+      out by the <em>Panathenaic Stadium (Kallimarmaro)</em> — the gleaming white-marble horseshoe,
+      rebuilt on an ancient running track, that hosted the first modern Olympics in 1896. You can
+      walk the track and climb the marble tiers; an audio guide is included with the ticket.</p>
+
     <h3 class="sub">A guided culinary narrative</h3>
     <p>If you love learning a culture through its food, a small-group <em>Culinary Backstreets</em>
       walk — often led by a local chef or food writer — bypasses the tourist traps for the working-class
       heart of downtown: the chaotic Varvakios food market, hot <em>loukoumades</em> at family-run
       shops, and a hidden seafood feast in a Syntagma arcade.</p>
 
+    <!-- ════════ DAY TRIPS ════════ -->
+    <h2 class="section"><span class="num">Part Four · Beyond the City</span>Escaping for a Day</h2>
+    <p>Nine days is enough to step outside Athens more than once. These run from a half-day swim a
+      tram-ride away to full marquee excursions — roughly in order of how far they pull you, and how
+      much of a day they ask for.</p>
+
+    <h3 class="sub">The Athens Riviera — a swim, not a journey</h3>
+    <p>The best answer to a 90°F afternoon barely counts as a day trip: the coast is part of the city.
+      Take the <em>tram from Syntagma to Glyfada</em>, then a short bus, and in about 70 minutes
+      (~€2.80) you're on the <em>Athens Riviera</em>. The headline stop is <em>Lake Vouliagmeni</em>,
+      a collapsed-cave lagoon of brackish thermal water — mineral-rich, a steady warm temperature
+      year-round, ringed by cliffs (~€8 entry, sunbeds and showers included). Prefer open sea? The
+      organized beaches at <em>Kavouri</em> and <em>Astir</em> deliver a full beach-club day. An easy
+      half-day, and an ideal use of an afternoon while Rachael is at the conference.</p>
+
+    <h3 class="sub">Cape Sounion &amp; the Temple of Poseidon</h3>
+    <p>Seventy kilometers down the Athens Riviera, a 5th-century-BC temple of white Doric columns
+      stands on a headland over the Aegean — the definitive Greek sunset, and the spot where Byron
+      carved his name into the marble. You can ride the <em>KTEL coastal bus from Pedion Areos</em>
+      (about €7–8, ~1.5–2 hrs), but service is sparse and timing the return after dusk is the catch.
+      For a sunset run, a <b>small-group sunset tour</b> with round-trip A/C coach removes all the
+      logistics and times golden hour for you. Either way, go for sundown — the temple at midday is
+      just hot marble.</p>
+
+    <h3 class="sub">Aegina — the easy island</h3>
+    <p>If you want a taste of island life without an overnight, <em>Aegina</em> is the closest call:
+      a <b>Flying Dolphin hydrofoil leaves Piraeus (Gate E8) and lands in about 40 minutes</b>
+      (~€14, with frequent daily sailings). Spend the day on the harbor, eat the island's famous
+      pistachios, swim, and visit the remarkably complete <em>Temple of Aphaia</em> before catching
+      an afternoon boat home. The closest, cheapest island taste there is.</p>
+
+    <h3 class="sub">Hydra — the car-free one</h3>
+    <p>If you want the more atmospheric island and don't mind paying for it, <em>Hydra</em> is the
+      Saronic standout. A high-speed catamaran from Piraeus lands you there in about <b>1 hr 5 min</b>
+      (~€40); take the ~09:00 boat for a full day. The island is famously and legally
+      <em>car-free</em> — no cars, scooters, or bikes at all, just stone lanes, donkeys, and water
+      taxis — so its grey-stone harbor amphitheater feels frozen a century back. It's long been an
+      artists' and a celebrity bolt-hole: wander up the lanes, swim off the rocks at Spilia or
+      Hydronetta, and eat on the waterfront before an evening boat home. Book ahead on summer
+      weekends.</p>
+
+    <span class="tier-tag">The big classical days · 10–12 hrs</span>
+    <p style="margin-top:14px;">Both of these are full, committed days with real coach time — best
+      for when the history is the whole point. A guided tour is the sane way to do either; renting a
+      car is only worth it if you want to linger.</p>
+
+    <h3 class="sub">Nafplio, Mycenae &amp; Epidaurus</h3>
+    <p>The classic Peloponnese loop, three sites in one long day. <em>Mycenae</em> is the Bronze-Age
+      citadel of Agamemnon — the <em>Lion Gate</em> and the beehive tombs, 3,000+ years old.
+      <em>Epidaurus</em> has the best-preserved ancient theater in Greece, where a guide drops a coin
+      on the center stone and you hear it from the back of 14,000 seats. And <em>Nafplio</em> — the
+      elegant first capital of modern Greece — is the prettiest town in the country, a Venetian
+      harbor under two fortresses, worth far more than the 45 minutes most tours give it. Group tours
+      run ~€50–90 pp with entries and guide; expect an 08:00 departure and a ~19:00 return.</p>
+
+    <h3 class="sub">Delphi</h3>
+    <p>For myth over stone, <em>Delphi</em> — the sanctuary the ancients called the
+      <em>"navel of the world,"</em> where the oracle spoke for a thousand years. It clings to the
+      slopes of Mount Parnassus above a sea of olive trees: the Temple of Apollo, the theater, the
+      stadium, and a superb museum (the bronze <em>Charioteer</em> alone is worth the trip). It's
+      ~2.5–3 hrs each way, usually paired with a stop in the stone-built mountain village of
+      <em>Arachova</em>. Tours run ~€45; the KTEL bus from Liosion is the budget alternative.</p>
+
+    <p class="note">All of these are in the <em>Day Trips</em> layer of your map. On a true scorcher,
+      the Riviera or an island wins — there's always sea and shade — while Sounion is best saved for an
+      evening once the heat has broken, and the long Peloponnese/Delphi days are happiest on a
+      slightly cooler forecast.</p>
+
     <!-- ════════ PHOTO GUIDE ════════ -->
-    <h2 class="section"><span class="num">Part Four · For Brett</span>A Photographer's Field Guide</h2>
+    <h2 class="section"><span class="num">Part Five · For Brett</span>A Photographer's Field Guide</h2>
     <p>The Athenian summer is a study in extreme contrast: blinding marble against deep alley shadow.
       Shooting in RAW is non-negotiable — you'll need the dynamic range to recover both ends in post.
       The light, the hours, and a few institutional rules below.</p>
