@@ -21,6 +21,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- ═══ LEAFLET (interactive map) ═══ -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -38,6 +44,86 @@
       --purple: #9b7ed4;
       --teal: #1abc9c;
     }
+
+    /* ─── MAP TAB (Leaflet) ─── */
+    #athens-map {
+      width: 100%;
+      height: calc(100vh - 250px);
+      min-height: 380px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      z-index: 1;
+    }
+    .map-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin: 14px 0 4px;
+    }
+    .map-legend .ml-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .map-legend .ml-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      flex: 0 0 auto;
+    }
+    /* Dark popups to match the app */
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+      background: var(--surface2);
+      color: var(--text);
+      box-shadow: 0 4px 18px rgba(0,0,0,.45);
+    }
+    .leaflet-popup-content { margin: 12px 14px; line-height: 1.45; }
+    .leaflet-popup-content b { font-size: 15px; }
+    .leaflet-popup-content .lp-cat {
+      display: inline-block; margin-top: 6px; font-size: 11px;
+      letter-spacing: .04em; text-transform: uppercase; color: var(--muted);
+    }
+    .leaflet-container a.leaflet-popup-close-button { color: var(--muted); }
+
+    /* ─── Culture deep-dive link / map link button ─── */
+    a.culture-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text);
+      background: linear-gradient(135deg, var(--surface2), var(--surface));
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: border-color .15s, transform .05s;
+    }
+    a.culture-link:active { transform: scale(.99); }
+    a.culture-link:hover { border-color: var(--gold); }
+
+    /* ─── Collapsible conference logistics ─── */
+    details.conf-collapse > summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    details.conf-collapse > summary::-webkit-details-marker { display: none; }
+    details.conf-collapse > summary::after {
+      content: "▾";
+      color: var(--muted);
+      font-size: 14px;
+      transition: transform .2s;
+    }
+    details.conf-collapse:not([open]) > summary::after { transform: rotate(-90deg); }
+    details.conf-collapse:not([open]) > summary { margin-bottom: 0; }
 
     body {
       background: var(--bg);
@@ -740,6 +826,7 @@
     <button class="tab-btn" onclick="showTab('day6')">Jul 4 ♥</button>
     <button class="tab-btn" onclick="showTab('day7')">Jul 5 ♥</button>
     <button class="tab-btn" onclick="showTab('day8')">Jul 6</button>
+    <button class="tab-btn" onclick="showTab('map')">🗺 Map</button>
   </div>
   <div class="scroll-hint">← scroll tabs →</div>
 
@@ -803,6 +890,17 @@
           <div class="value">EEST (UTC+3)</div>
         </div>
       </div>
+    </section>
+
+    <section>
+      <div class="section-title">Before You Go</div>
+      <a class="culture-link" href="athens_culture.html">
+        📖&nbsp; Athens Culture &amp; Dining Deep-Dive&nbsp;→
+      </a>
+      <p style="color:var(--muted);font-size:13px;margin:8px 2px 0">
+        Long-form reading: neighborhood history, the city's culinary renaissance tier by tier,
+        and a photographer's field guide. Best enjoyed on the plane.
+      </p>
     </section>
 
     <section>
@@ -1278,9 +1376,23 @@
         <div class="place-meta">North of Syntagma · 2–3+ hrs · €20</div>
         <div class="place-desc">The most important Greek antiquities collection in the world. Mask of Agamemnon, the Antikythera Mechanism (world's first analog computer, ~100 BC), the Artemision Bronze (Zeus or Poseidon), and the Thira frescoes from ancient Santorini.</div>
         <div class="tip">⚡ Wildly underrated relative to the Acropolis. Less crowded, fully A/C, and the collection is extraordinary. A strong midday option.</div>
+        <div class="tip">📷 Brett: non-flash photography is permitted in <em>all</em> galleries (unlike the Acropolis Museum). Arrive at 8 AM opening to shoot the icons before the tour groups, and bring a fast prime (f/1.8–2.8) for the dim bronze halls.</div>
         <div class="tags">
           <span class="tag blue">Underrated</span>
           <span class="tag green">A/C Refuge</span>
+          <span class="tag purple">Photo Spot</span>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="place-name">B&amp;E Goulandris Foundation</div>
+        <div class="place-meta">Pangrati · 1.5–2 hrs · ~€10</div>
+        <div class="place-desc">A refurbished neoclassical building housing an extraordinary private modern-art collection — Van Gogh, Picasso, Rodin, Giacometti, and Degas' "Little Dancer Aged Fourteen." A quiet, civilized counterpoint to the ancient ruins, in the up-and-coming Pangrati neighborhood near the Panathenaic Stadium.</div>
+        <div class="tip">⚡ The lush garden café-restaurant (by the Deipnosofistirion team) is a perfect Mediterranean lunch after the galleries. Pair it with Louvron kafeneio right across the street.</div>
+        <div class="tags">
+          <span class="tag blue">Underrated</span>
+          <span class="tag green">A/C Refuge</span>
+          <span class="tag gold">Garden Café</span>
         </div>
       </div>
 
@@ -1379,6 +1491,18 @@
         </div>
       </div>
 
+      <div class="place-card">
+        <div class="place-name">First Cemetery of Athens</div>
+        <div class="place-meta">Near Panathenaic Stadium · free · ~1 hr</div>
+        <div class="place-desc">One of the most hauntingly beautiful and under-visited sites in Athens — the resting place of Greece's elite since the 1830s, and effectively a sprawling, pine-shaded outdoor museum of 19th-century neoclassical sculpture: elaborate marble mausoleums, weeping angels, and sphinxes. The most famous work is the "Sleeping Girl" (Koimomeni) by Yannoulis Chalepas.</div>
+        <div class="tip">📷 Brett: late-afternoon light filtering through the dark pine canopy onto whitewashed marble is magical. A 70–200mm isolates sculptural detail against the trees. Silence and respect for ongoing ceremonies are expected; photography is permitted.</div>
+        <div class="tags">
+          <span class="tag green">Free</span>
+          <span class="tag blue">No Crowds</span>
+          <span class="tag purple">Photo Spot</span>
+        </div>
+      </div>
+
       <div class="category-label">Hidden Bars &amp; Distilleries</div>
 
       <div class="place-card">
@@ -1430,6 +1554,29 @@
       </div>
 
       <div class="category-label">Day Trips &amp; Escapes</div>
+
+      <div class="place-card">
+        <div class="place-name">Hydra Island</div>
+        <div class="place-meta">Catamaran from Piraeus · 1–1.75 hrs · €35–40 each way</div>
+        <div class="place-desc">The most photogenic island in the Saronic Gulf — a strict preservation order bans <em>all</em> motor vehicles, so everything moves by foot, wooden boat, or donkey. The main town rises like a grey-and-white stone amphitheater from the sea, full of fortified 18th-century sea-captain mansions, fishermen mending nets, and sun-drenched cats on whitewashed parapets.</div>
+        <div class="tip">📷 Brett's Jul 1 solo day. Morning ferries depart Piraeus 08:00–10:00; returns run to ~19:30. Book ahead in July high season. The car-free silence and Aegean light are made for black-and-white architectural shots.</div>
+        <div class="tags">
+          <span class="tag teal">Island</span>
+          <span class="tag purple">Photo Day</span>
+          <span class="tag gold">Book Ahead</span>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="place-name">Nafplio</div>
+        <div class="place-meta">KTEL bus from Kifissos · ~2 hr 10 min · €13–17</div>
+        <div class="place-desc">The first capital of modern Greece — a layered Venetian/Ottoman/neoclassical old town on the Peloponnese coast, with bougainvillea-choked alleys, marble squares, and the tiny island fortress of Bourtzi floating in the harbor. Above it all sits the massive Palamidi Fortress, reached by 999 stone steps for unrivaled panoramas of the Argolic Gulf.</div>
+        <div class="tip">📷 Brett's Jul 2 solo day. Buses leave roughly every 2 hrs (ideal 06:00 / 08:00 / 09:30); returns until ~20:00, leaving room for sunset shots. Crosses the Corinth Canal en route.</div>
+        <div class="tags">
+          <span class="tag purple">Photo Day</span>
+          <span class="tag blue">Venetian Town</span>
+        </div>
+      </div>
 
       <div class="place-card">
         <div class="place-name">Vouliagmeni Lake</div>
@@ -1645,9 +1792,10 @@
   <!-- ═══════════════════════════════════════════════════════════ -->
   <div id="tab-conference" class="tab-content">
 
-    <!-- ── Getting there & on-site logistics ── -->
+    <!-- ── Getting there & on-site logistics (collapsible) ── -->
     <section>
-      <div class="section-title">Getting There &amp; On-Site</div>
+      <details class="conf-collapse" id="conf-logistics" open>
+      <summary class="section-title">Getting There &amp; On-Site</summary>
 
       <div class="alert blue">
         <strong>Hotel → Venue · Metro Line 3, direct (no change)</strong>
@@ -1679,6 +1827,7 @@
         <b>Wed 12:30–14:00</b> · <b>Thu 12:45–14:15</b> · <b>Fri 12:45–13:45</b>.
         Gazi/Kerameikos has cafés a short walk from Technopolis — text a spot the morning of.
       </div>
+      </details>
     </section>
 
     <section>
@@ -2128,6 +2277,24 @@
   </div><!-- /tab-conference -->
 
 
+  <!-- ═══ MAP TAB ═══ -->
+  <div id="tab-map" class="tab-content">
+    <section>
+      <div class="section-title">Athens Map</div>
+      <p style="color:var(--muted);font-size:14px;margin:-4px 0 10px">
+        Every sight, hidden gem, restaurant, bar, and day trip from this guide — tap a pin for details.
+        Pins are color-coded by category.
+      </p>
+      <div id="athens-map"></div>
+      <div class="map-legend" id="map-legend"></div>
+      <!-- Replace the href below with your published Google "My Maps" share link once created. -->
+      <a class="culture-link" style="margin-top:12px"
+         href="https://www.google.com/maps/search/?api=1&query=Acropolis%20Athens"
+         target="_blank" rel="noopener">🗺 Open Athens in Google Maps ↗</a>
+    </section>
+  </div><!-- /tab-map -->
+
+
   <!-- ═══ BOTTOM NAV ═══ -->
   <nav class="bottom-nav">
     <button onclick="showTab('overview')" class="active">
@@ -2168,6 +2335,7 @@
         if (oc.indexOf("'" + name + "'") !== -1) b.classList.add('active');
       });
       window.scrollTo(0, 0);
+      if (name === 'map') initAthensMap();
     }
 
     /* ─── Countdown to departure (Jun 27 2026, 3:30 PM ET) ─── */
@@ -2327,6 +2495,140 @@
         });
       });
     })();
+
+    /* ─── Remember whether the conference logistics block is collapsed ─── */
+    (function () {
+      var d = document.getElementById('conf-logistics');
+      if (!d) return;
+      if (localStorage.getItem('confLogisticsOpen') === '0') d.removeAttribute('open');
+      d.addEventListener('toggle', function () {
+        localStorage.setItem('confLogisticsOpen', d.open ? '1' : '0');
+      });
+    })();
+
+    /* ─── Athens map (Leaflet, lazy-loaded on first Map-tab open) ───
+       Marker data is hand-synced with athens_trip_2026.kml (the source of truth).
+       Format per item: [name, lat, lng, note]. Colors mirror the KML palette. */
+    var MAP_DATA = {
+      sight:        { color: '#2e86de', label: 'Sights', items: [
+        ['Acropolis & Parthenon', 37.97154, 23.72562, 'The crown jewel. Book the 8 AM slot — cooler, no crowds. May close 1–5 PM in extreme July heat.'],
+        ['Acropolis Museum', 37.96826, 23.72867, 'Fully A/C — perfect midday refuge. Top-floor Parthenon Gallery mirrors the temple.'],
+        ['Ancient Agora & Temple of Hephaestus', 37.97542, 23.72132, 'Best-preserved ancient Greek temple in existence. Socrates walked here. Combo ticket.'],
+        ['Temple of Olympian Zeus', 37.96934, 23.73291, 'Once the largest temple in the ancient world. 15 of 104 columns remain, 17 m tall.'],
+        ['Roman Agora & Tower of the Winds', 37.97491, 23.72576, 'Octagonal marble clocktower (~50 BC) — sundial, weather vane & water clock in one.'],
+        ['Panathenaic Stadium', 37.96843, 23.74118, 'Only all-marble stadium in the world. First modern Olympics, 1896. Run a lap.'],
+        ['National Archaeological Museum', 37.98916, 23.73156, 'World\'s top Greek antiquities. A/C. Non-flash photos allowed in all galleries.'],
+        ['Odeon of Herodes Atticus', 37.97126, 23.72344, 'Roman theater (161 AD), still in use. Athens & Epidaurus Festival, Jun–Aug.'],
+        ['Lycabettus Hill', 37.97990, 23.74497, 'Highest point in Athens (277 m). Funicular from Kolonaki. Arrive before sunset.'],
+        ['Syntagma — Changing of the Guard', 37.97521, 23.73534, 'Evzones guard the Tomb of the Unknown Soldier. Full ceremony Sun 11 AM. Free.'],
+        ['B&E Goulandris Foundation', 37.96650, 23.74450, 'Van Gogh, Picasso, Rodin, Degas in a Pangrati neoclassical villa. Garden café. A/C.']
+      ]},
+      hidden:       { color: '#9b7ed4', label: 'Hidden Gems', items: [
+        ['Anafiotika', 37.97283, 23.72697, 'Whitewashed Cycladic village on the Acropolis slope. Golden hour. Free.'],
+        ['Strefi Hill', 37.98698, 23.73741, 'The local\'s Lycabettus — pine hill in Exarchia, panoramic & crowd-free.'],
+        ['The Pnyx', 37.97225, 23.71993, 'World\'s first democratic parliament (507 BC). Zero crowds, great Acropolis angle.'],
+        ['Kerameikos Cemetery', 37.97723, 23.71596, 'Ancient cemetery & museum, cats in the ruins. Combo ticket. By the conference.'],
+        ['TAF — The Art Foundation', 37.97627, 23.72324, 'Courtyard cocktail bar in an 1870s building, 30 s from the Agora. Normanou 5.'],
+        ['Brettos Distillery', 37.97177, 23.72946, 'Family distillery since 1909, walls of glowing colored bottles. Plaka.'],
+        ['Benaki Museum of Islamic Art', 37.97635, 23.71924, 'Top-ten Islamic collection; intact 17th-c. Cairo room. Almost nobody visits.'],
+        ['Numismatic Museum (Schliemann\'s Mansion)', 37.97894, 23.73504, 'Coins + the Troy excavator\'s frescoed mansion. Near Syntagma.'],
+        ['Syntagma Metro — Ancient Finds', 37.97521, 23.73534, 'Excavated artifacts displayed museum-style on the platform. Free.'],
+        ['Kaisariani Monastery', 37.97013, 23.77623, '11th-c. Byzantine monastery on Hymettus. Cool, quiet, frescoed. Free/cheap.'],
+        ['Dexameni Square', 37.97930, 23.74070, 'Elm-shaded plaza atop Hadrian\'s Roman reservoir. Steps from the lodging.']
+      ]},
+      dining:       { color: '#e8a020', label: 'Dining', items: [
+        ['Delta Restaurant (SNFCC)', 37.94070, 23.72270, 'Greece\'s only 2-Michelin-star + Green Star. 12-course "Omnivore", €240pp. Book weeks ahead.'],
+        ['Soil', 37.96800, 23.74300, 'Michelin-starred "earthy" fine dining, Pangrati neoclassical house. (approx)'],
+        ['Aleria', 37.98730, 23.71930, 'Two FNL stars. Romantic courtyard villa in Metaxourgeio. (approx)'],
+        ['Orizontes Lycabettus', 37.98030, 23.74470, '360° Acropolis & Aegean views from the summit. Book ~1 hr before sunset.'],
+        ['Farma Bralou', 37.97900, 23.74300, 'Kolonaki steakhouse — meat from the owners\' organic farm. (approx)'],
+        ['Linou Soumpasis kai Sia', 37.97900, 23.72500, 'Candle-lit neo-taverna in Psyrri, hyper-seasonal. (approx)'],
+        ['Pharaoh', 37.97700, 23.72350, 'Live-fire neo-taverna: wood oven, langoustines, slow-cooked goat. (approx)'],
+        ['Nolan', 37.97650, 23.73140, 'Acclaimed Japanese-Greek fusion near Syntagma. (approx)'],
+        ['Sushimou', 37.97450, 23.73200, 'Tiny 12-seat omakase, freshest Greek catch. (approx)'],
+        ['Louvron', 37.96850, 23.74300, 'Kafeneio since 1937 across from the Goulandris Museum. (approx)'],
+        ['Mirch — Indian Souvlaki', 37.97650, 23.72700, 'Tandoori-naan chicken-tikka wrap on Ermou St. (approx)'],
+        ['Karamanlidika Tou Fani', 37.98300, 23.72700, 'Cured-meat deli/meze by the Central Market. (approx)'],
+        ['Stani — oldest dairy (1931)', 37.98550, 23.73000, 'Thick sheep/goat yogurt with honey & walnuts; bougatsa. (approx)'],
+        ['Cookoomela Grill — vegan gyros', 37.98400, 23.73300, 'Mushroom-gyros vegan souvlaki, Exarchia. (approx)'],
+        ['Kokkion — artisanal ice cream', 37.97850, 23.72450, 'Inventive gelato, Psyrri. (approx)']
+      ]},
+      bar:          { color: '#1abc9c', label: 'Bars & Rooftops', items: [
+        ['A for Athens — rooftop', 37.97599, 23.72250, 'Direct Acropolis view. Non-negotiable for sunset (8–9 PM). Arrive early.'],
+        ['360 Cocktail Bar — rooftop', 37.97641, 23.72220, '360° views incl. the Acropolis. Pair with A for Athens.'],
+        ['TAF — The Art Foundation', 37.97627, 23.72324, 'Courtyard cocktail bar, 1870s building, by the Agora.']
+      ]},
+      neighborhood: { color: '#3cb878', label: 'Neighborhoods', items: [
+        ['Plaka', 37.97260, 23.72850, 'Oldest neighborhood — pedestrian, bougainvillea, tavernas. One block off the path is lovely.'],
+        ['Monastiraki', 37.97617, 23.72275, 'Energetic crossroads: ruins, flea market, street food, rooftop bars.'],
+        ['Koukaki', 37.96520, 23.72570, 'Residential, brunch culture, near the Acropolis Museum.'],
+        ['Psirri', 37.97840, 23.72200, 'Hip, street art, neo-tavernas, cocktails. Best after 9 PM.'],
+        ['Kolonaki', 37.98200, 23.74400, 'Aristocratic district, boutiques, the Lycabettus funicular. Home base.'],
+        ['Gazi (conference district)', 37.97800, 23.71400, 'Industrial-chic, gasworks smokestacks (Technopolis). Metro: Kerameikos.'],
+        ['Pangrati', 37.96700, 23.74300, 'Leafy food quarter by the stadium — Goulandris, Soil, old kafeneia.'],
+        ['Exarchia', 37.98630, 23.73400, 'Edgy, street art, Strefi Hill, the Archaeological Museum. Daylight is best.'],
+        ['Thisio', 37.97550, 23.71900, 'Pedestrian promenade at the base of the Acropolis. Cafés with ruin views.']
+      ]},
+      logistics:    { color: '#e05252', label: 'Transit & Logistics', items: [
+        ['Technopolis — IARC 2026', 37.97951, 23.71530, 'Conference venue, Pireos 100, Gazi. Auditorium "Miltiadis Evert". Metro: Kerameikos.'],
+        ['Athens Airport (ATH)', 37.93644, 23.94444, 'Metro Line 3 to center: €9, ~40 min. Taxi €40 day / €55 night.'],
+        ['Piraeus Port', 37.94638, 23.63869, 'Ferries to Hydra & Aegina. Metro Line 1. Book return ahead in July.'],
+        ['Kifissos Bus Station (KTEL)', 37.99360, 23.69430, 'KTEL Argolidas to Nafplio — ~2 hr 10 min, ~€13–17, every ~2 hrs.'],
+        ['Evangelismos Metro', 37.97649, 23.74719, 'Line 3. Closest to the lodging (~8–10 min walk). Direct to Kerameikos.'],
+        ['Syntagma Metro', 37.97521, 23.73534, 'Lines 2 & 3. Tap card to ride. €1.20 single / €4.10 daily cap.'],
+        ['Kerameikos Metro', 37.97861, 23.71158, 'Line 3. Opens into Gazi, steps from Technopolis.'],
+        ['Monastiraki Metro', 37.97646, 23.72261, 'Lines 1 & 3. Walk to Acropolis, Agora, Plaka, rooftops.'],
+        ['Acropolis Metro', 37.96883, 23.72779, 'Line 2. Closest to the Acropolis Museum & south slope.']
+      ]},
+      daytrip:      { color: '#e8862e', label: 'Day Trips', items: [
+        ['Hydra Island', 37.34900, 23.46500, 'Car-free island of sea-captain mansions, donkeys & cats. Catamaran from Piraeus ~1–1.75 hr, €35–40. (Solo photo day, Jul 1.)'],
+        ['Nafplio', 37.56800, 22.79600, 'Venetian old town, Bourtzi & Palamidi fortresses. KTEL bus ~2 hr 10 min. (Solo photo day, Jul 2.)'],
+        ['Vouliagmeni Lake', 37.81373, 23.78018, 'Natural thermal lake, 22–29°C, stalactites. ~30–40 min taxi. €15. Perfect July escape.'],
+        ['Aegina Island', 37.74753, 23.42726, '~40 min ferry. Pistachios, Temple of Aphaia. Easy full day, e.g. Jul 4.'],
+        ['Ancient Epidaurus Theatre', 37.59861, 23.07850, 'Best-preserved ancient theater; a whisper carries to the top row. Possible Jul 3 social-event venue.'],
+        ['Cape Sounion — Temple of Poseidon', 37.65088, 24.01988, '5th-c. BC cliff temple, Byron\'s carved name. One of Greece\'s great sunsets.']
+      ]},
+      photo:        { color: '#e36fae', label: 'Photo Spots', items: [
+        ['First Cemetery of Athens', 37.96100, 23.73350, 'Pine-shaded neoclassical sculpture; the "Sleeping Girl". Magical late-afternoon light. 70–200mm. (Jul 3.)'],
+        ['Philopappos Hill', 37.96650, 23.71850, 'Looks straight at the Parthenon — premier golden-hour vantage. Free.'],
+        ['Varvakios Agora (Central Market)', 37.98280, 23.72680, 'Chaotic, photogenic food market — butchers, olives, market cats. Mid-morning.'],
+        ['Anafiotika (golden hour)', 37.97283, 23.72697, 'Cycladic cubes & bougainvillea on the Acropolis slope. Golden/blue hour.'],
+        ['Syntagma blue hour', 37.97521, 23.73534, 'Evzones & empty Plaka at ~06:30 — deep blue vs warm streetlamps, no crowds.']
+      ]}
+    };
+
+    var athensMapInited = false, athensMap = null;
+    function initAthensMap() {
+      if (typeof L === 'undefined') return;               // Leaflet not loaded yet
+      if (athensMapInited) { if (athensMap) athensMap.invalidateSize(); return; }
+      athensMapInited = true;
+
+      athensMap = L.map('athens-map', { scrollWheelZoom: false }).setView([37.9755, 23.734], 13);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(athensMap);
+
+      var legend = document.getElementById('map-legend');
+      Object.keys(MAP_DATA).forEach(function (key) {
+        var cat = MAP_DATA[key];
+        cat.items.forEach(function (it) {
+          L.circleMarker([it[1], it[2]], {
+            radius: 7, color: '#fff', weight: 2, opacity: 1,
+            fillColor: cat.color, fillOpacity: 0.95
+          }).addTo(athensMap)
+            .bindPopup('<b>' + it[0] + '</b><br>' + it[3] +
+                       '<br><span class="lp-cat">' + cat.label + '</span>');
+        });
+        var item = document.createElement('span');
+        item.className = 'ml-item';
+        item.innerHTML = '<span class="ml-dot" style="background:' + cat.color + '"></span>' + cat.label;
+        legend.appendChild(item);
+      });
+
+      // Tiles render at the right size now that the container is visible.
+      setTimeout(function () { athensMap.invalidateSize(); }, 50);
+    }
   </script>
 
 </body>
