@@ -5,6 +5,9 @@
 International APHASIA Rehabilitation Conference Program
 athens_trip_2026.kml
 
+# Local-only project notes — keep out of the public repo
+CLAUDE.md
+
 # OS / tooling
 .DS_Store
 .claude/
