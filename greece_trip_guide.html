@@ -2604,9 +2604,9 @@
       athensMapInited = true;
 
       athensMap = L.map('athens-map', { scrollWheelZoom: false }).setView([37.9755, 23.734], 13);
-      // CARTO dark basemap — free, allows hotlinking (OSM's own tiles 403 from github.io),
-      // and the dark theme matches the app.
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      // CARTO Voyager basemap — free, allows hotlinking (OSM's own tiles 403 from github.io);
+      // colored street-map style that's easy to navigate.
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
         subdomains: 'abcd',
         maxZoom: 20,
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
@@ -2617,8 +2617,8 @@
         var cat = MAP_DATA[key];
         cat.items.forEach(function (it) {
           L.circleMarker([it[1], it[2]], {
-            radius: 7, color: '#fff', weight: 2, opacity: 1,
-            fillColor: cat.color, fillOpacity: 0.95
+            radius: 7, color: '#2a2f38', weight: 1.5, opacity: 1,
+            fillColor: cat.color, fillOpacity: 1
           }).addTo(athensMap)
             .bindPopup('<b>' + it[0] + '</b><br>' + it[3] +
                        '<br><span class="lp-cat">' + cat.label + '</span>');
