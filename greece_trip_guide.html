@@ -2604,9 +2604,12 @@
       athensMapInited = true;
 
       athensMap = L.map('athens-map', { scrollWheelZoom: false }).setView([37.9755, 23.734], 13);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      // CARTO dark basemap — free, allows hotlinking (OSM's own tiles 403 from github.io),
+      // and the dark theme matches the app.
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        subdomains: 'abcd',
+        maxZoom: 20,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
       }).addTo(athensMap);
 
       var legend = document.getElementById('map-legend');
