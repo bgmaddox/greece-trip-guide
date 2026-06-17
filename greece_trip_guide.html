@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="robots" content="noindex, nofollow">
-  <title>Athens, Greece — June 28 – July 6, 2026</title>
+  <title>Athens, Greece — June 27 – July 5, 2026</title>
 
   <!-- ═══ PWA ═══ -->
   <link rel="manifest" href="manifest.json">
@@ -560,12 +560,14 @@
       background: none;
       border: none;
       cursor: pointer;
-      font-size: 18px;
+      font-size: 20px;
       line-height: 1;
       padding: 0 4px;
-      color: var(--border);
+      color: rgba(232, 160, 32, 0.55);   /* faded gold — visible "tap to save" affordance */
+      transition: color .15s, transform .1s;
       flex-shrink: 0;
     }
+    .cf-star:hover { color: var(--gold); transform: scale(1.15); }
     .cf-star.on { color: var(--gold); }
     .cf-title-row { display: flex; align-items: flex-start; gap: 6px; justify-content: space-between; }
     .cf-title-row .title { flex: 1; }
@@ -812,20 +814,19 @@
   <!-- ═══ HEADER ═══ -->
   <div class="header">
     <h1>Athens, Greece</h1>
-    <p>June 28 – July 6, 2026 &nbsp;·&nbsp; Brett &amp; Rachael</p>
+    <p>June 27 – July 5, 2026 &nbsp;·&nbsp; Brett &amp; Rachael</p>
   </div>
 
   <!-- ═══ TAB NAV ═══ -->
   <div class="tab-nav">
     <button class="tab-btn active" onclick="showTab('overview')">Overview</button>
     <button class="tab-btn" onclick="showTab('day1')">Jun 27–28</button>
-    <button class="tab-btn" onclick="showTab('day2')">Jun 30 ♥</button>
+    <button class="tab-btn" onclick="showTab('day2')">Jun 29–30 ♥</button>
     <button class="tab-btn" onclick="showTab('day3')">Jul 1</button>
     <button class="tab-btn" onclick="showTab('day4')">Jul 2</button>
     <button class="tab-btn" onclick="showTab('day5')">Jul 3</button>
     <button class="tab-btn" onclick="showTab('day6')">Jul 4 ♥</button>
-    <button class="tab-btn" onclick="showTab('day7')">Jul 5 ♥</button>
-    <button class="tab-btn" onclick="showTab('day8')">Jul 6</button>
+    <button class="tab-btn" onclick="showTab('day7')">Jul 5</button>
     <button class="tab-btn" onclick="showTab('map')">🗺 Map</button>
   </div>
   <div class="scroll-hint">← scroll tabs →</div>
@@ -839,7 +840,7 @@
     <div class="hero" style="background-image:url('https://images.unsplash.com/photo-1555993539-1732b0258235?w=1200&q=70')">
       <div class="eyebrow">Next Adventure</div>
       <h2>Athens, Greece</h2>
-      <div class="hero-sub">June 28 – July 6, 2026 · Brett &amp; Rachael</div>
+      <div class="hero-sub">June 27 – July 5, 2026 · Brett &amp; Rachael</div>
       <div class="countdown" id="countdown">
         <div class="cd-unit"><div class="cd-num" id="cd-days">—</div><div class="cd-label">Days</div></div>
         <div class="cd-unit"><div class="cd-num" id="cd-hrs">—</div><div class="cd-label">Hrs</div></div>
@@ -863,7 +864,7 @@
         </div>
         <div class="ref-card">
           <div class="label">Dates</div>
-          <div class="value">Jun 28 – Jul 6</div>
+          <div class="value">Jun 27 – Jul 5</div>
         </div>
         <div class="ref-card">
           <div class="label">Flight</div>
@@ -911,24 +912,31 @@
       </div>
       <div class="timeline">
         <div class="timeline-item transit">
-          <div class="timeline-time">Sun Jun 28</div>
+          <div class="timeline-time">Sat Jun 27</div>
           <div class="timeline-content">
             <div class="title">Fly ATL → ATH</div>
-            <div class="sub">Delta nonstop departs ~3:25–5:20 PM · ~10h45m flight</div>
+            <div class="sub">Delta 296 nonstop departs 3:30 PM · ~10h50m flight (overnight)</div>
+          </div>
+        </div>
+        <div class="timeline-item key">
+          <div class="timeline-time">Sun Jun 28</div>
+          <div class="timeline-content">
+            <div class="title">Arrive Athens · Together ♥</div>
+            <div class="sub">Arrive ~9:20 AM local · settle in · light first-day explore</div>
           </div>
         </div>
         <div class="timeline-item key">
           <div class="timeline-time">Mon Jun 29</div>
           <div class="timeline-content">
-            <div class="title">Arrive Athens · Together ♥</div>
-            <div class="sub">Arrive ~7–9 AM local · settle in · light first-day explore</div>
+            <div class="title">Full Free Day · Together ♥</div>
+            <div class="sub">First full day together before conference starts</div>
           </div>
         </div>
         <div class="timeline-item key">
           <div class="timeline-time">Tue Jun 30</div>
           <div class="timeline-content">
             <div class="title">Full Free Day · Together ♥</div>
-            <div class="sub">First full day together before conference starts</div>
+            <div class="sub">Second free day · explore Athens before IARC begins</div>
           </div>
         </div>
         <div class="timeline-item">
@@ -955,22 +963,15 @@
         <div class="timeline-item key">
           <div class="timeline-time">Sat Jul 4</div>
           <div class="timeline-content">
-            <div class="title">Together ♥ — Day 1 Post-Conference</div>
-            <div class="sub">Full day Athens · day trip possible (Aegina, coast, Vouliagmeni)</div>
-          </div>
-        </div>
-        <div class="timeline-item key">
-          <div class="timeline-time">Sun Jul 5</div>
-          <div class="timeline-content">
             <div class="title">Together ♥ — Last Full Day</div>
-            <div class="sub">Sunday Changing of Guard ceremony 11 AM · farewell dinner</div>
+            <div class="sub">Post-conference · day trip possible (Aegina, coast, Vouliagmeni) · farewell dinner</div>
           </div>
         </div>
         <div class="timeline-item transit">
-          <div class="timeline-time">Mon Jul 6</div>
+          <div class="timeline-time">Sun Jul 5</div>
           <div class="timeline-content">
             <div class="title">Fly Home · ATH → ATL</div>
-            <div class="sub">Check-in 3 hrs before departure · Metro Line 3 → Airport</div>
+            <div class="sub">Delta 297 departs 11:30 AM · arrives ATL 5:02 PM · Metro to airport by 8 AM</div>
           </div>
         </div>
       </div>
@@ -1109,14 +1110,14 @@
 
 
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- TAB: DAY 2 — Jun 30 (Solo)                                 -->
+  <!-- TAB: DAY 2 — Jun 29–30 (Two free days, together)            -->
   <!-- ═══════════════════════════════════════════════════════════ -->
   <div id="tab-day2" class="tab-content">
     <section>
-      <div class="section-title">Tue Jun 30 · Together ♥ — First Full Day</div>
+      <div class="section-title">Mon Jun 29 – Tue Jun 30 · Together ♥ — Free Days</div>
       <div class="alert green">
-        <strong>Free Day — Both Together</strong>
-        Your first full uninterrupted day. Conference doesn't start until tomorrow. Best day to hit the Acropolis together (8 AM slot — book ahead). Energy is high, jet lag is manageable.
+        <strong>Two Free Days — Both Together</strong>
+        Two full uninterrupted days before the conference starts Wed Jul 1. Best window to hit the Acropolis together (8 AM slot — book ahead) and shake off jet lag while energy is high.
       </div>
       <div class="placeholder">Itinerary to be planned — see Sights + Hidden tabs for options</div>
     </section>
@@ -1221,34 +1222,6 @@
       </div>
     </section>
   </div><!-- /tab-day7 -->
-
-
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- TAB: DAY 8 — Jul 6 (Fly Home)                             -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <div id="tab-day8" class="tab-content">
-    <section>
-      <div class="section-title">Mon Jul 6 · Fly Home</div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <div class="title">Check Out · Head to Airport</div>
-            <div class="sub">TBD based on flight time — confirm once tickets are booked</div>
-          </div>
-        </div>
-        <div class="timeline-item transit">
-          <div class="timeline-content">
-            <div class="title">ATH → ATL</div>
-            <div class="sub">Check delta.com for return flight time once booked</div>
-          </div>
-        </div>
-      </div>
-      <div class="alert blue">
-        <strong>Airport Note</strong>
-        Plan to arrive at ATH at least 3 hours before an international departure. Metro Line 3 from Syntagma or Monastiraki is the easiest option (€9, ~40 min).
-      </div>
-    </section>
-  </div><!-- /tab-day8 -->
 
 
   <!-- ═══════════════════════════════════════════════════════════ -->
@@ -1393,7 +1366,7 @@
         <div class="pc-body">
         <div class="place-meta">City Center · free · 30 min</div>
         <div class="place-desc">Evzones (Presidential Guard) in traditional uniform guard the Tomb of the Unknown Soldier 24/7. Guard changes every hour. The Sunday 11 AM ceremony includes a full marching band and the complete regiment.</div>
-        <div class="tip">⚡ The Sunday grand ceremony is worth arranging your schedule around — don't miss it if you're there on Jul 5.</div>
+        <div class="tip">⚡ The full Sunday grand ceremony (11 AM) only happens on Jul 5 — your departure day — so you'll likely miss it. Catch one of the hourly changes earlier in the trip instead.</div>
         <div class="tags">
           <span class="tag green">Free</span>
           <span class="tag purple">Cultural</span>
