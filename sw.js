@@ -1,6 +1,6 @@
 /* Athens 2026 Trip Guide — service worker
    Bump CACHE version whenever you edit the guide so phones pull fresh content. */
-const CACHE = 'athens-2026-v11';
+const CACHE = 'athens-2026-v12';
 
 const CORE = [
   './',
