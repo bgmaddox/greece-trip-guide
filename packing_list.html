@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Athens 2026 — Packing List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e14;
+    --surface: #131920;
+    --surface2: #1b2330;
+    --border: #263040;
+    --text: #eef1f5;
+    --muted: #7a8fa8;
+    --accent: #2e86de;   /* Aegean blue */
+    --gold: #e8a020;     /* warm gold */
+    --green: #3cb878;
+    --red: #e05252;
+    --purple: #9b7ed4;
+    --teal: #1abc9c;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ── */
+  header {
+    background: linear-gradient(135deg, #0d1e30, var(--surface));
+    border-bottom: 1px solid var(--border);
+    padding: 28px 20px 24px;
+    text-align: center;
+  }
+  header .eyebrow {
+    font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin: 0 0 8px;
+  }
+  header h1 {
+    font-family: "Playfair Display", serif; font-weight: 800;
+    font-size: 2rem; margin: 0; color: var(--text);
+  }
+  header p.sub { color: var(--muted); margin: 8px 0 0; font-size: .9rem; }
+  header a.back {
+    display: inline-block; margin-top: 14px; font-size: .8rem;
+    color: var(--muted); text-decoration: none; border: 1px solid var(--border);
+    padding: 5px 12px; border-radius: 999px;
+  }
+  header a.back:hover { color: var(--accent); border-color: var(--accent); }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 20px 16px 80px; }
+
+  /* ── Progress ── */
+  .progress-wrap {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(10,14,20,.92); backdrop-filter: blur(8px);
+    padding: 14px 16px; margin: 0 -16px 22px; border-bottom: 1px solid var(--border);
+  }
+  .progress-meta {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: .8rem; color: var(--muted); margin-bottom: 8px;
+  }
+  .progress-meta strong { color: var(--text); font-size: .95rem; }
+  .bar { height: 8px; background: var(--surface2); border-radius: 999px; overflow: hidden; }
+  .bar > span {
+    display: block; height: 100%; width: 0%;
+    background: linear-gradient(90deg, var(--accent), var(--teal));
+    border-radius: 999px; transition: width .3s ease;
+  }
+  .toolbar { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .toolbar button {
+    font-family: inherit; font-size: .76rem; cursor: pointer;
+    background: var(--surface2); color: var(--muted);
+    border: 1px solid var(--border); border-radius: 999px; padding: 5px 12px;
+  }
+  .toolbar button:hover { color: var(--text); border-color: var(--accent); }
+
+  /* ── Category card ── */
+  .cat {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; margin-bottom: 16px; overflow: hidden;
+  }
+  .cat-head {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 16px; cursor: pointer; user-select: none;
+  }
+  .cat-head .icon { font-size: 1.2rem; }
+  .cat-head h2 {
+    font-family: "Playfair Display", serif; font-weight: 700;
+    font-size: 1.12rem; margin: 0; flex: 1;
+  }
+  .cat-head .count { font-size: .78rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .cat-head .chev { color: var(--muted); transition: transform .2s; font-size: .8rem; }
+  .cat.collapsed .chev { transform: rotate(-90deg); }
+  .cat.collapsed .cat-body { display: none; }
+  .cat-accent { width: 4px; align-self: stretch; }
+
+  ul.items { list-style: none; margin: 0; padding: 0 8px 8px; }
+  li.item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 9px 8px; border-radius: 8px;
+  }
+  li.item:hover { background: var(--surface2); }
+  li.item .cb {
+    appearance: none; -webkit-appearance: none; flex: none;
+    width: 20px; height: 20px; border-radius: 6px;
+    border: 2px solid var(--border); background: transparent; cursor: pointer;
+    position: relative; transition: all .15s;
+  }
+  li.item .cb:hover { border-color: var(--accent); }
+  li.item .cb:checked { background: var(--accent); border-color: var(--accent); }
+  li.item .cb:checked::after {
+    content: "✓"; position: absolute; inset: 0; color: #fff;
+    font-size: 13px; display: flex; align-items: center; justify-content: center;
+  }
+  li.item .label { flex: 1; font-size: .92rem; }
+  li.item.done .label { color: var(--muted); text-decoration: line-through; }
+  li.item .note { color: var(--muted); font-size: .78rem; font-style: italic; }
+  li.item .del {
+    flex: none; background: none; border: none; cursor: pointer;
+    color: var(--border); font-size: 1.1rem; line-height: 1; padding: 2px 6px;
+    opacity: 0; transition: all .15s;
+  }
+  li.item:hover .del { opacity: 1; }
+  li.item .del:hover { color: var(--red); }
+
+  .add-row { display: flex; gap: 8px; padding: 6px 8px 4px; }
+  .add-row input {
+    flex: 1; font-family: inherit; font-size: .88rem;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 8px 10px; color: var(--text);
+  }
+  .add-row input::placeholder { color: var(--muted); }
+  .add-row input:focus { outline: none; border-color: var(--accent); }
+  .add-row button {
+    font-family: inherit; font-size: .85rem; font-weight: 600; cursor: pointer;
+    background: var(--accent); color: #fff; border: none;
+    border-radius: 8px; padding: 0 16px;
+  }
+  .add-row button:hover { filter: brightness(1.1); }
+
+  /* ── Add-category ── */
+  .add-cat { display: flex; gap: 8px; margin-top: 22px; }
+  .add-cat input {
+    flex: 1; font-family: inherit; font-size: .9rem;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 11px 14px; color: var(--text);
+  }
+  .add-cat input:focus { outline: none; border-color: var(--accent); }
+  .add-cat button {
+    font-family: inherit; font-size: .88rem; font-weight: 600; cursor: pointer;
+    background: var(--surface2); color: var(--text);
+    border: 1px solid var(--border); border-radius: 10px; padding: 0 18px;
+  }
+  .add-cat button:hover { border-color: var(--accent); }
+
+  footer {
+    text-align: center; color: var(--muted); font-size: .76rem;
+    margin-top: 36px; line-height: 1.7;
+  }
+  footer .tip { color: var(--gold); }
+</style>
+</head>
+<body>
+<header>
+  <p class="eyebrow">Athens · Greece</p>
+  <h1>Packing List</h1>
+  <p class="sub">Jun 27 – Jul 5, 2026 · hot Mediterranean summer (~32–36 °C)</p>
+  <a class="back" href="greece_trip_guide.html">← Back to trip guide</a>
+</header>
+
+<div class="wrap">
+  <div class="progress-wrap">
+    <div class="progress-meta">
+      <span><strong id="packedCount">0</strong> packed</span>
+      <span id="remainCount">0 to go</span>
+    </div>
+    <div class="bar"><span id="barFill"></span></div>
+    <div class="toolbar">
+      <button onclick="uncheckAll()">Reset checks</button>
+      <button onclick="collapseAll()">Collapse all</button>
+      <button onclick="expandAll()">Expand all</button>
+      <button onclick="restoreDefaults()">Restore default list</button>
+    </div>
+  </div>
+
+  <div id="list"></div>
+
+  <div class="add-cat">
+    <input id="newCatName" type="text" placeholder="New category name (e.g. Snacks)…"
+           onkeydown="if(event.key==='Enter')addCategory()">
+    <button onclick="addCategory()">+ Category</button>
+  </div>
+
+  <footer>
+    Your checks &amp; edits save automatically on this device.<br>
+    <span class="tip">Tip:</span> tap a category header to collapse it · hover an item to delete it.
+  </footer>
+</div>
+
+<script>
+/* ── Default packing list, tuned to this trip:
+   Athens heat + a business-casual conference (Rachael) + island/ferry day-trips + swimming. ── */
+const DEFAULTS = [
+  { id:'docs', icon:'🛂', accent:'var(--red)', name:'Documents & Money', items:[
+    { t:'Passports', n:'valid 6+ mo past travel' },
+    { t:'Printed flight itinerary / PNR' },
+    { t:'Hotel + conference confirmations' },
+    { t:'2 credit cards + 1 debit', n:'tell bank you\'re traveling' },
+    { t:'Some euros in cash', n:'for tavernas, kiosks, tips' },
+    { t:'Travel/health insurance card' },
+    { t:'Driver\'s license / ID' },
+    { t:'Photocopies of passport', n:'stored separately' },
+  ]},
+  { id:'tech', icon:'🔌', accent:'var(--accent)', name:'Electronics', items:[
+    { t:'Phone + charger' },
+    { t:'EU Type-C/F plug adapter', n:'Greece = 230V, round pins' },
+    { t:'Portable battery bank' },
+    { t:'Charging cables (×2)' },
+    { t:'Headphones / earbuds' },
+    { t:'Camera + extra battery', n:'optional' },
+    { t:'eSIM or roaming plan set up' },
+  ]},
+  { id:'health', icon:'💊', accent:'var(--green)', name:'Toiletries & Health', items:[
+    { t:'Sunscreen SPF 50', n:'Athens sun is brutal' },
+    { t:'After-sun / aloe' },
+    { t:'Sunglasses' },
+    { t:'Wide-brim hat / cap' },
+    { t:'Prescription meds', n:'in carry-on, original bottles' },
+    { t:'Pain reliever / ibuprofen' },
+    { t:'Anti-diarrheal + electrolyte tabs' },
+    { t:'Band-aids & blister plasters', n:'marble streets + sandals' },
+    { t:'Bug spray', n:'for evenings' },
+    { t:'Toothbrush, paste, deodorant' },
+    { t:'Hand sanitizer & wipes' },
+    { t:'Refillable water bottle', n:'tap water is safe in Athens' },
+  ]},
+  { id:'clothes', icon:'👕', accent:'var(--teal)', name:'Clothing — hot weather', items:[
+    { t:'Lightweight breathable tops (5–6)', n:'linen/cotton' },
+    { t:'Shorts (2–3)' },
+    { t:'Light dress / linen pants' },
+    { t:'1 light layer', n:'AC + breezy rooftops at night' },
+    { t:'Underwear & socks (8 days)' },
+    { t:'Sleepwear' },
+    { t:'Light rain jacket / packable', n:'unlikely but tiny' },
+  ]},
+  { id:'shoes', icon:'👟', accent:'var(--purple)', name:'Footwear', items:[
+    { t:'Comfortable walking shoes', n:'broken in — Acropolis hills' },
+    { t:'Sandals' },
+    { t:'Flip-flops', n:'beach / hotel' },
+    { t:'1 dressier pair', n:'nice dinners' },
+  ]},
+  { id:'beach', icon:'🏖️', accent:'var(--gold)', name:'Beach & Swim', items:[
+    { t:'Swimsuits (×2)' },
+    { t:'Quick-dry travel towel', n:'Vouliagmeni Lake, island swims' },
+    { t:'Water shoes', n:'rocky Greek beaches' },
+    { t:'Dry bag / waterproof phone pouch' },
+    { t:'Goggles', n:'optional' },
+  ]},
+  { id:'conf', icon:'🎓', accent:'var(--gold)', name:'Conference (Rachael)', items:[
+    { t:'Business-casual outfits (2–3)' },
+    { t:'Comfortable dress shoes' },
+    { t:'Lanyard / badge holder' },
+    { t:'Notebook + pens' },
+    { t:'Business cards', n:'if applicable' },
+    { t:'Presentation backup', n:'USB + cloud' },
+  ]},
+  { id:'daypack', icon:'🎒', accent:'var(--accent)', name:'Day-Trip Daypack', items:[
+    { t:'Small backpack / crossbody', n:'anti-theft zip' },
+    { t:'Reusable water bottle' },
+    { t:'Snacks for ferries / buses' },
+    { t:'Motion-sickness tablets', n:'Hydra/island ferries' },
+    { t:'Light scarf / cover', n:'monasteries need covered shoulders' },
+    { t:'Portable fan / cooling towel' },
+  ]},
+  { id:'misc', icon:'🧳', accent:'var(--muted)', name:'Misc & Smart', items:[
+    { t:'Packing cubes' },
+    { t:'Laundry bag' },
+    { t:'Travel umbrella', n:'sun shade too' },
+    { t:'Ziploc bags' },
+    { t:'Combination lock' },
+    { t:'Greek phrasebook / offline translate' },
+    { t:'Downloaded offline maps', n:'+ this guide installed as PWA' },
+  ]},
+];
+
+const KEY = 'athens2026-packing-v1';
+let state = load();
+
+function load() {
+  try {
+    const raw = localStorage.getItem(KEY);
+    if (raw) return JSON.parse(raw);
+  } catch(e) {}
+  return structuredClone(DEFAULTS).map(c => ({...c, items: c.items.map(i => ({...i, done:false}))}));
+}
+function save() { localStorage.setItem(KEY, JSON.stringify(state)); }
+
+function uid() { return 'x' + Math.random().toString(36).slice(2,9); }
+
+/* ── Render ── */
+function render() {
+  const root = document.getElementById('list');
+  root.innerHTML = '';
+  state.forEach((cat, ci) => {
+    const done = cat.items.filter(i => i.done).length;
+    const card = document.createElement('div');
+    card.className = 'cat' + (cat.collapsed ? ' collapsed' : '');
+    card.style.display = 'flex';
+    card.innerHTML = `
+      <div class="cat-accent" style="background:${cat.accent||'var(--border)'}"></div>
+      <div style="flex:1">
+        <div class="cat-head" onclick="toggleCat(${ci})">
+          <span class="icon">${cat.icon||'📦'}</span>
+          <h2></h2>
+          <span class="count">${done}/${cat.items.length}</span>
+          <span class="chev">▾</span>
+        </div>
+        <div class="cat-body">
+          <ul class="items"></ul>
+          <div class="add-row">
+            <input type="text" placeholder="Add item…"
+              onkeydown="if(event.key==='Enter'){addItem(${ci}, this.value); this.value='';}">
+            <button onclick="const i=this.previousElementSibling; addItem(${ci}, i.value); i.value='';">Add</button>
+          </div>
+        </div>
+      </div>`;
+    card.querySelector('h2').textContent = cat.name;
+    const ul = card.querySelector('ul.items');
+    cat.items.forEach((it, ii) => {
+      const li = document.createElement('li');
+      li.className = 'item' + (it.done ? ' done' : '');
+      const cb = document.createElement('input');
+      cb.type = 'checkbox'; cb.className = 'cb'; cb.checked = !!it.done;
+      cb.onchange = () => toggleItem(ci, ii);
+      const lab = document.createElement('span');
+      lab.className = 'label'; lab.textContent = it.t;
+      if (it.n) { const s = document.createElement('span'); s.className='note'; s.textContent = ' — ' + it.n; lab.appendChild(s); }
+      const del = document.createElement('button');
+      del.className = 'del'; del.innerHTML = '×'; del.title = 'Remove';
+      del.onclick = (e) => { e.stopPropagation(); removeItem(ci, ii); };
+      li.append(cb, lab, del);
+      ul.appendChild(li);
+    });
+    root.appendChild(card);
+  });
+  updateProgress();
+}
+
+function updateProgress() {
+  let total = 0, done = 0;
+  state.forEach(c => c.items.forEach(i => { total++; if (i.done) done++; }));
+  document.getElementById('packedCount').textContent = done;
+  document.getElementById('remainCount').textContent = (total - done) + ' to go';
+  document.getElementById('barFill').style.width = total ? (done/total*100) + '%' : '0%';
+}
+
+/* ── Mutations ── */
+function toggleItem(ci, ii) { state[ci].items[ii].done = !state[ci].items[ii].done; save(); render(); }
+function removeItem(ci, ii) { state[ci].items.splice(ii,1); save(); render(); }
+function addItem(ci, val) {
+  const t = (val||'').trim(); if (!t) return;
+  state[ci].items.push({ t, done:false }); save(); render();
+}
+function toggleCat(ci) { state[ci].collapsed = !state[ci].collapsed; save(); render(); }
+function addCategory() {
+  const inp = document.getElementById('newCatName');
+  const name = inp.value.trim(); if (!name) return;
+  state.push({ id: uid(), icon:'📦', accent:'var(--accent)', name, items:[] });
+  inp.value = ''; save(); render();
+}
+function uncheckAll() {
+  state.forEach(c => c.items.forEach(i => i.done = false)); save(); render();
+}
+function collapseAll() { state.forEach(c => c.collapsed = true); save(); render(); }
+function expandAll() { state.forEach(c => c.collapsed = false); save(); render(); }
+function restoreDefaults() {
+  if (!confirm('Replace your current list with the original default list? This erases your edits.')) return;
+  localStorage.removeItem(KEY); state = load(); render();
+}
+
+render();
+</script>
+</body>
+</html>

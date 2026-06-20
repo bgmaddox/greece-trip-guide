@@ -1,12 +1,13 @@
 /* Athens 2026 Trip Guide — service worker
    Bump CACHE version whenever you edit the guide so phones pull fresh content. */
-const CACHE = 'athens-2026-v14';
+const CACHE = 'athens-2026-v15';
 
 const CORE = [
   './',
   'index.html',
   'greece_trip_guide.html',
   'athens_culture.html',
+  'packing_list.html',
   'manifest.json',
   'icons/icon-192.png',
   'icons/icon-512.png',
