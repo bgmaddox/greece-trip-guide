@@ -615,6 +615,9 @@
       letter-spacing: 0.5px;
       border-radius: 20px;
     }
+    .cf-inline-tag.blue { background: #0d2040; color: var(--accent); }
+    .cf-inline-tag.teal { background: #0d2820; color: var(--teal); }
+    .cf-inline-tag.gold { background: var(--gold); color: #2a1e00; }
 
     /* ═══════════════════════════════════════════════════════════ */
     /*  VISUAL JOURNEY — Stitch-inspired layer                      */
@@ -1232,6 +1235,10 @@
       <div class="alert blue">
         <strong>IARC 2026 Begins</strong>
         Rachael at Technopolis City of Athens · Brett joins family for a day trip.
+      </div>
+      <div class="alert gold">
+        <strong>★ Georgia State posters — today's lunch session</strong>
+        3 GSU posters in Poster Session 1 (12:30–14:00): Sydney Frederiksen (P8), Gillian Anderson (P11), and Jacqueline Laures-Gore (P17). See the Conference tab for titles.
       </div>
       <div class="timeline">
         <div class="timeline-item key">
@@ -2396,7 +2403,14 @@
           <div class="timeline-time">12:30</div>
           <div class="timeline-content">
             <div class="title">Lunch &amp; Poster Session 1</div>
-            <div class="sub">Until 14:00</div>
+            <div class="sub">Until 14:00 &nbsp;·&nbsp; <span class="cf-inline-tag gold">★ 3 Georgia State posters</span></div>
+            <div class="sub" style="margin-top:4px">Section 1 — Assessment, Screening &amp; Measurement in Aphasia</div>
+            <button class="cf-toggle" onclick="togglePresentations(this)">Show Georgia State posters ▾</button>
+            <div class="cf-pres" style="display:none">
+              <div class="cf-pres-item"><span class="cf-op">P8</span> Exploring the Relationship Between Reading Ability and Reading Attitudes in Aphasia — <em>Sydney Frederiksen</em> &nbsp;<span class="cf-inline-tag gold">GSU</span></div>
+              <div class="cf-pres-item"><span class="cf-op">P11</span> Comparing Adult Reading Impairment Across Developmental and Acquired Etiologies — <em>Gillian Anderson</em> &nbsp;<span class="cf-inline-tag gold">GSU</span></div>
+              <div class="cf-pres-item"><span class="cf-op">P17</span> An Exploratory Analysis of a Communication Specific Support Group for Individuals with Brain Tumor-Related Language Impairment — <em>Jacqueline Laures-Gore</em> &nbsp;<span class="cf-inline-tag gold">GSU</span></div>
+            </div>
           </div>
         </div>
       </div>
